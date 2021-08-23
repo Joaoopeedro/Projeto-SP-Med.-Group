@@ -85,3 +85,11 @@ go
 
 SELECT COUNT(idUsuario) QauntidadeUsuario from usuario
 go
+
+--> Calculou a idade do usuário a partir da data de nascimento
+--> fiz com paciente
+SELECT paciente.nomePaciente,
+DATEDIFF (YEAR, dataNascimento,GETDATE() ) Idade
+FROM paciente
+GO
+

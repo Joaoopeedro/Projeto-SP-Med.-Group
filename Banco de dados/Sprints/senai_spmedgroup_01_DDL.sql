@@ -81,3 +81,21 @@ CREATE TABLE consulta(
 	descricao VARCHAR(70)
 );
 GO
+
+
+--> Criou um evento para que a idade do usuário seja calculada todos os dias
+ALTER TABLE paciente
+ADD idadePaciente TINYINT
+
+
+CREATE PROCEDURE SP_IDADE_PACIENTE
+AS 
+BEGIN
+
+UPDATE paciente SET idadePaciente = DATEDIFF(YEAR,dataNascimento,GETDATE())
+
+END 
+
+EXEC SP_IDADE_PACIENTE
+
+SELECT * FROM paciente
