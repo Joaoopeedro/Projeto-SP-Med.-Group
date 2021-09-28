@@ -15,29 +15,69 @@ namespace sp_Medical_group.Web.Api.Repositories
     {
         SpMedicalContext ctx = new();
 
-        public void Atualizar(Paciente pacienteAtualizado)
+     
+
+        public void Atualizar(short id, Paciente pacienteAtualizado)
         {
-            throw new NotImplementedException();
+            Paciente pacienteBuscado = ctx.Pacientes.Find(id);
+
+            if (pacienteBuscado != null)
+            {
+                pacienteBuscado.IdUsuario = pacienteBuscado.IdUsuario;
+                pacienteBuscado.IdadePaciente = pacienteAtualizado.IdadePaciente;
+                pacienteBuscado.NomePaciente = pacienteAtualizado.NomePaciente;
+                pacienteBuscado.Telefone = pacienteAtualizado.Telefone;
+                pacienteBuscado.Cpf = pacienteBuscado.Cpf;
+                pacienteBuscado.DataNascimento = pacienteBuscado.DataNascimento;
+                pacienteBuscado.Endereco = pacienteAtualizado.Endereco;
+                pacienteBuscado.Rg = pacienteBuscado.Rg;
+
+                ctx.Pacientes.Update(pacienteBuscado);
+                ctx.SaveChanges();
+            }
+            
+
         }
 
         public Paciente BuscarPorId(short id)
         {
-            throw new NotImplementedException();
+            return ctx.Pacientes.FirstOrDefault(p => p.IdPaciente == id);
         }
 
         public void Cadastrar(Paciente novoPaciente)
         {
-            throw new NotImplementedException();
+            ctx.Pacientes.Add(novoPaciente);
+            ctx.SaveChanges();
         }
 
         public void Deletar(short id)
         {
-            throw new NotImplementedException();
+            ctx.Pacientes.Remove(BuscarPorId(id));
+            ctx.SaveChanges();
         }
 
         public List<Paciente> ListarTodos()
         {
-            throw new NotImplementedException();
+            return ctx.Pacientes
+                .Select(p => new Paciente()
+                {
+                    IdPaciente = p.IdPaciente,
+                    IdUsuario = p.IdUsuario,
+                    IdadePaciente = p.IdadePaciente,
+                    NomePaciente = p.NomePaciente,
+                    Telefone = p.Telefone,
+                    Cpf = p.Cpf,
+                    DataNascimento = p.DataNascimento,
+                    Endereco = p.Endereco,
+                    Rg = p.Rg,
+                    IdUsuarioNavigation = new Usuario()
+                    {
+                        Email = p.IdUsuarioNavigation.Email
+                    },
+                    Consulta = ctx.Consulta.Where(c => c.IdPaciente == p.IdPaciente).ToList()
+
+                }) 
+                .ToList();
         }
     }
 }

@@ -15,29 +15,86 @@ namespace sp_Medical_group.Web.Api.Repositories
     {
         SpMedicalContext ctx = new();
 
-        public void Atualizar(Medico medicoAtualizado)
+        public void Atualizar(short id, Medico medicoAtualizado)
         {
-            throw new NotImplementedException();
+            Medico medicoBuscado = ctx.Medicos.Find(id);
+
+            if (medicoBuscado != null)
+            {
+                medicoBuscado.IdMedico = medicoBuscado.IdMedico;
+                medicoBuscado.IdUsuario = medicoBuscado.IdUsuario;
+                medicoBuscado.IdClinica = medicoAtualizado.IdClinica;
+                medicoBuscado.NomeMedico = medicoAtualizado.NomeMedico;
+                medicoBuscado.IdEspecializacao = medicoAtualizado.IdEspecializacao;
+                medicoBuscado.Crm = medicoAtualizado.Crm;
+                
+
+                ctx.Medicos.Update(medicoBuscado);
+                ctx.SaveChanges();
+            }
         }
 
         public Medico BuscarPorId(short idMedico)
         {
-            throw new NotImplementedException();
+            return ctx.Medicos
+                .Select(p => new Medico()
+                {
+                    IdMedico = p.IdMedico,
+                    NomeMedico = p.NomeMedico,
+                    Crm = p.Crm,
+                    IdClinicaNavigation = new Clinica()
+                    {
+                        NomeFantasia = p.IdClinicaNavigation.NomeFantasia,
+                        Cnpj = p.IdClinicaNavigation.Cnpj,
+                        Endereco = p.IdClinicaNavigation.Endereco,
+                        RazaoSocial = p.IdClinicaNavigation.RazaoSocial
+                    },
+                    IdEspecializacaoNavigation = new Especializacao()
+                    {
+                        TipoEspecializacao = p.IdEspecializacaoNavigation.TipoEspecializacao
+                    },
+
+                    Consulta = ctx.Consulta.Where(c => c.IdMedico == p.IdMedico).ToList()
+                })
+                .FirstOrDefault(p => p.IdMedico == idMedico);
         }
 
         public void Cadastrar(Medico novoMedico)
         {
-            throw new NotImplementedException();
+            ctx.Medicos.Add(novoMedico);
+            ctx.SaveChanges();
         }
 
         public void Deletar(short idMedico)
         {
-            throw new NotImplementedException();
+            Medico medicoDeletado = ctx.Medicos.FirstOrDefault(m => m.IdMedico == idMedico);
+            ctx.Medicos.Remove(medicoDeletado);
+            ctx.SaveChanges();
         }
 
         public List<Medico> ListarTodos()
         {
-            throw new NotImplementedException();
+            return ctx.Medicos
+               .Select(p => new Medico()
+               {
+                   IdMedico = p.IdMedico,
+                   NomeMedico = p.NomeMedico,
+                   Crm = p.Crm,
+                   IdClinicaNavigation = new Clinica()
+                   {
+                       NomeFantasia = p.IdClinicaNavigation.NomeFantasia,
+                       Cnpj = p.IdClinicaNavigation.Cnpj,
+                       Endereco = p.IdClinicaNavigation.Endereco,
+                       RazaoSocial = p.IdClinicaNavigation.RazaoSocial 
+                   },
+                   IdEspecializacaoNavigation = new Especializacao()
+                   {
+                       TipoEspecializacao = p.IdEspecializacaoNavigation.TipoEspecializacao
+                   },
+
+                   Consulta = ctx.Consulta.Where(c => c.IdMedico == p.IdMedico).ToList()
+               })
+               .ToList();
         }
     }
 }

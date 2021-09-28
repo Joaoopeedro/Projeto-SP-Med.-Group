@@ -82,6 +82,17 @@ CREATE TABLE consulta(
 );
 GO
 
+--> CRIANDO TABELA DE IMAGEMUSUARIO
+CREATE TABLE imagemUsuario(     
+id INT PRIMARY KEY IDENTITY(1,1),     
+idUsuario SMALLINT NOT NULL UNIQUE FOREIGN KEY REFERENCES usuario(idUsuario),
+binario VARBINARY(MAX) NOT NULL,    
+mimeType VARCHAR(30) NOT NULL,    
+nomeArquivo VARCHAR(250) NOT NULL,     
+data_inclusao DATETIME DEFAULT GETDATE() NULL 
+); 
+GO
+
 
 --> Criou um evento para que a idade do usuário seja calculada todos os dias
 ALTER TABLE paciente

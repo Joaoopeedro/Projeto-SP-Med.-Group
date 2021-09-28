@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace sp_Medical_group.Web.Api.Controllers
@@ -69,16 +70,16 @@ namespace sp_Medical_group.Web.Api.Controllers
         /// Lita as consultas o medico
         /// </summary>
         /// <returns>Uma lista de um determinado medico</returns>
-        [Authorize(Roles = "3")]
-        [HttpGet("Medico")]
-        public IActionResult ConsultaMedico()
+        [Authorize(Roles = "3,2")]
+        [HttpGet("Consulta")]
+        public IActionResult ListarMinhas()
         {
 
             try
             {
-                short idMedico = Convert.ToInt16(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
-
-                List<Consulta> listaConsulta = _consultaRepository.ListarMinhasMedico(idMedico);
+                short id = Convert.ToInt16(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+                short idTipo = Convert.ToInt16(HttpContext.User.Claims.First(c => c.Type == ClaimTypes.Role).Value);
+                List<Consulta> listaConsulta = _consultaRepository.ListarMinhas(id,idTipo);
 
                 if (listaConsulta.Count == 0)
                 {
@@ -88,43 +89,6 @@ namespace sp_Medical_group.Web.Api.Controllers
                     });
                 }
 
-                return Ok(listaConsulta);
-            }
-            catch (Exception erro)
-            {
-
-                return BadRequest(new
-                {
-                    mensagem = "Nao foi possivel ver suas consultas",
-                    erro
-                });
-            }
-
-        }
-
-        /// <summary>
-        /// Lista as consultas o paciente
-        /// </summary>
-        /// <returns>Uma conquista e um determinado paciente</returns>
-        [Authorize(Roles = "2")]
-        [HttpGet("Paciente")]
-        public IActionResult ConsultaPaciente()
-        {
-
-            try
-            {
-                short idPaciente = Convert.ToInt16(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
-
-                List<Consulta> listaConsulta = _consultaRepository.ListarMinhasPaciente(idPaciente);
-
-                if (listaConsulta.Count == 0)
-                {
-
-                    return BadRequest(new
-                    {
-                        Mensagem = "Não há nenhuma consulta do paciente informado"
-                    });
-                }
 
                 return Ok(listaConsulta);
             }
@@ -139,6 +103,8 @@ namespace sp_Medical_group.Web.Api.Controllers
             }
 
         }
+
+       
 
         /// <summary>
         /// Muda a descricao de uma determinada consulta
@@ -152,6 +118,15 @@ namespace sp_Medical_group.Web.Api.Controllers
         {
             try
             {
+                Consulta consultaBuscada = _consultaRepository.BuscarConsulta(id);
+                short idMedico = Convert.ToInt16(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+                if (consultaBuscada.IdMedico != idMedico)
+                {
+                    return BadRequest(new
+                    {
+                        mensagem = "So o medico dessa consulta pode alterar a desricao"
+                    });
+                }
                 if (id <= 0)
                 {
 
@@ -272,7 +247,7 @@ namespace sp_Medical_group.Web.Api.Controllers
                     mensagem = "Consulta desse id nao existe!"
                 });
             }
-            _consultaRepository.BuscarConsulta(id);
+            
 
             return Ok(_consultaRepository.BuscarConsulta(id));
         }

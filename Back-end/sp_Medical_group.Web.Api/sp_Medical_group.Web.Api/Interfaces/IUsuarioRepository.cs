@@ -30,5 +30,12 @@ namespace sp_Medical_group.Web.Api.Interfaces
         /// </summary>
         /// <param name="idUsuario">ID do usuario deletado</param>
         void Deletar(short idUsuario);
+
+        /// <summary>
+        /// Buscar um usuario pelo seu id
+        /// </summary>
+        /// <param name="id">Id do Usuario buscado</param>
+        /// <returns>Um usuario r</returns>
+        Usuario BuscarPorId(short id);
     }
 }

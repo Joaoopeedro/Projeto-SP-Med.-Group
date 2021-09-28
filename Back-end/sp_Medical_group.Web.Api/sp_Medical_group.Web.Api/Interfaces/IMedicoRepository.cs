@@ -37,10 +37,11 @@ namespace sp_Medical_group.Web.Api.Interfaces
 
         void Deletar(short idMedico);
 
-        /// <summary>
-        /// Atualizar os dados do medico
-        /// </summary>
-        /// <param name="medicoAtualizado">Dados do medico a ser atualizados</param>
-        void Atualizar(Medico medicoAtualizado);
+       /// <summary>
+       /// Atualizar dados do medico
+       /// </summary>
+       /// <param name="id">Id do medico a ser atualizado</param>
+       /// <param name="medicoAtualizado">Dados do medico atializado</param>
+        void Atualizar( short id ,Medico medicoAtualizado);
     }
 }

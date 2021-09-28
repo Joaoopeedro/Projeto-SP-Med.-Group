@@ -45,18 +45,14 @@ namespace sp_Medical_group.Web.Api.Interfaces
         List<Consulta> ListarTodos();
 
         /// <summary>
-        /// Lista todos as consultas que um determinado medico 
+        /// Listar todas as consultas do medico e do paciente pelo seu id gerado no Token
         /// </summary>
-        /// <param name="idUsuario">ID do medico que participa das consultas listados</param>
-        /// <returns>Uma lista de consultas de um determinado medico</returns>
-        List<Consulta> ListarMinhasMedico(short idMedico);
+        /// <param name="id">ID do medico ou do paciente</param>
+        /// <param name="idTipo">Id do tipo de usuario</param>
+        /// <returns>Um lista dependendo do ID do usuario</returns>
+        List<Consulta> ListarMinhas(short id,short idTipo);
 
-        /// <summary>
-        /// Lista todos as consultas que um determinado paciente
-        /// </summary>
-        /// <param name="IdPaciente">ID do paciente que participa das consultas listados</param>
-        /// <returns>Uma lista de consultas de um determinado paciente</returns>
-        List<Consulta> ListarMinhasPaciente(short idPaciente);
+  
 
         /// <summary>
         /// Altera uma descricao de uma consulta

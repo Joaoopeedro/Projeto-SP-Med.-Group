@@ -9,12 +9,12 @@ namespace sp_Medical_group.Web.Api.Domains
     {
         public Situacao()
         {
-            Consulta = new HashSet<Consulta>();
+            Consulta = new HashSet<Consultum>();
         }
 
         public short IdSituacao { get; set; }
         public string Descricao { get; set; }
 
-        public virtual ICollection<Consulta> Consulta { get; set; }
+        public virtual ICollection<Consultum> Consulta { get; set; }
     }
 }

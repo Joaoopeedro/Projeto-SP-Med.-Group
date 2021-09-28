@@ -18,6 +18,11 @@ namespace sp_Medical_group.Web.Api.Repositories
         /// </summary>
         SpMedicalContext ctx = new();
 
+        public Usuario BuscarPorId(short id)
+        {
+            return ctx.Usuarios.FirstOrDefault(U => U.IdUsuario == id);
+        }
+
         public void Cadastrar(Usuario novoUsuario)
         {
             ctx.Usuarios.Add(novoUsuario);

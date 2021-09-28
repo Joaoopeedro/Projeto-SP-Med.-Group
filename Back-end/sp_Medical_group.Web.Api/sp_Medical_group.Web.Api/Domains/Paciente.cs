@@ -9,7 +9,7 @@ namespace sp_Medical_group.Web.Api.Domains
     {
         public Paciente()
         {
-            Consulta = new HashSet<Consulta>();
+            Consulta = new HashSet<Consultum>();
         }
 
         public short IdPaciente { get; set; }
@@ -23,6 +23,6 @@ namespace sp_Medical_group.Web.Api.Domains
         public byte? IdadePaciente { get; set; }
 
         public virtual Usuario IdUsuarioNavigation { get; set; }
-        public virtual ICollection<Consulta> Consulta { get; set; }
+        public virtual ICollection<Consultum> Consulta { get; set; }
     }
 }

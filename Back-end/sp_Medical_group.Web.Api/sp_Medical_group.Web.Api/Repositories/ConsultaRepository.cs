@@ -55,23 +55,64 @@ namespace sp_Medical_group.Web.Api.Repositories
             ctx.SaveChanges();
         }
 
-        public List<Consulta> ListarMinhasMedico(short idMedico)
+        public List<Consulta> ListarMinhas(short id, short idTipo)
         {
-            return ctx.Consulta
-                .Include(c => c.IdMedicoNavigation.IdUsuarioNavigation)
-                //.Include(c => c.IdSituacaoNavigation)
-                .Where(c => c.IdMedicoNavigation.IdUsuarioNavigation.IdUsuario == idMedico)
-                .ToList();
+            switch (idTipo)
+            {
+                case 3:
+                    Medico medico = ctx.Medicos.FirstOrDefault(m => m.IdUsuario == id);
+                    short idMedico = medico.IdMedico;
+                    return ctx.Consulta
+                        .Select(c => new Consulta() {
+                            IdConsulta = c.IdConsulta,
+                            DataConsulta = c.DataConsulta,
+                            IdMedico = c.IdMedico,
+                            Descricao = c.Descricao,
+                            IdMedicoNavigation = new Medico()
+                            {
+                                NomeMedico = c.IdMedicoNavigation.NomeMedico,
+                                Crm = c.IdMedicoNavigation.Crm,
+                                IdEspecializacao = c.IdMedicoNavigation.IdEspecializacao
+                                
+
+                            }
+                           
+                        })
+                        .Where(c => c.IdMedico == idMedico).ToList();
+                    
+
+                case 2:
+                    Paciente paciente = ctx.Pacientes.FirstOrDefault(p => p.IdPaciente == id);
+                    short idPaciente = paciente.IdPaciente;
+                    return ctx.Consulta
+                        .Select(c => new Consulta()
+                        {
+                            IdConsulta = c.IdConsulta,
+                            DataConsulta = c.DataConsulta,
+                            IdMedico = c.IdMedico,
+                            Descricao = c.Descricao,
+                            IdPacienteNavigation = new Paciente()
+                            {
+                                NomePaciente = c.IdPacienteNavigation.NomePaciente,
+                                IdadePaciente = c.IdPacienteNavigation.IdadePaciente,
+                                Telefone = c.IdPacienteNavigation.Telefone,
+                                Endereco = c.IdPacienteNavigation.Endereco,
+                                DataNascimento = c.IdPacienteNavigation.DataNascimento,
+                                Cpf = c.IdPacienteNavigation.Cpf,
+                                Rg = c.IdPacienteNavigation.Rg
+                                
+                            }
+
+                        })
+                        .Where(c => c.IdPaciente == idPaciente).ToList();
+                   
+                default:
+                    return null;
+                    
+            }
         }
 
-        public List<Consulta> ListarMinhasPaciente(short idPaciente)
-        {
-            return ctx.Consulta
-                .Include(c => c.IdPacienteNavigation.IdUsuarioNavigation)
-                //.Include(c => c.IdSituacaoNavigation)
-                .Where(c => c.IdPacienteNavigation.IdUsuarioNavigation.IdUsuario == idPaciente)
-                .ToList();
-        }
+      
 
         public List<Consulta> ListarTodos()
         {
