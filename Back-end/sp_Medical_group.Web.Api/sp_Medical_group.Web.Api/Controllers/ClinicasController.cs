@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using sp_Medical_group.Web.Api.Domains;
 using sp_Medical_group.Web.Api.Interfaces;
@@ -22,6 +23,12 @@ namespace sp_Medical_group.Web.Api.Controllers
             _clinicaRepository = new ClinicaRepository();
         }
 
+        /// <summary>
+        /// Cadastra uma nova clinica
+        /// </summary>
+        /// <param name="novaClinica">Dados da nova clinica</param>
+        /// <returns>Uma Clinica cadastrada</returns>
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Cadastrar(Clinica novaClinica)
         {
@@ -30,6 +37,12 @@ namespace sp_Medical_group.Web.Api.Controllers
             return StatusCode(201);
         }
 
+        /// <summary>
+        /// Deletar uma clinica
+        /// </summary>
+        /// <param name="idClinica">ID da clinica deletada</param>
+        /// <returns>Clinica deletada</returns>
+        [Authorize(Roles = "1")]
         [HttpDelete("deletar/{idClinica}")]
         public IActionResult Deletar(short idClinica)
         {

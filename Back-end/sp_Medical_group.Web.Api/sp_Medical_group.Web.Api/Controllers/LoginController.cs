@@ -25,6 +25,11 @@ namespace sp_Medical_group.Web.Api.Controllers
             _usuarioRepository = new UsuarioRepository();
         }
 
+        /// <summary>
+        /// Logar um usuario
+        /// </summary>
+        /// <param name="login">Login do Usuario</param>
+        /// <returns>Um usuario logado</returns>
         [HttpPost("login")]
         public IActionResult Login(Usuario login)
         {
@@ -38,7 +43,7 @@ namespace sp_Medical_group.Web.Api.Controllers
             var minhasClaims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email),
-                new Claim(JwtRegisteredClaimNames.Jti,usuarioBuscado.Senha),
+                new Claim(JwtRegisteredClaimNames.Jti,usuarioBuscado.IdUsuario.ToString()),
                 new Claim(ClaimTypes.Role,usuarioBuscado.IdTipoUsuario.ToString())
             };
 

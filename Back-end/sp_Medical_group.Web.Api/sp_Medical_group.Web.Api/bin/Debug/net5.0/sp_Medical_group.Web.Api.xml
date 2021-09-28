@@ -4,6 +4,97 @@
         <name>sp_Medical_group.Web.Api</name>
     </assembly>
     <members>
+        <member name="M:sp_Medical_group.Web.Api.Controllers.ClinicasController.Cadastrar(sp_Medical_group.Web.Api.Domains.Clinica)">
+            <summary>
+            Cadastra uma nova clinica
+            </summary>
+            <param name="novaClinica">Dados da nova clinica</param>
+            <returns>Uma Clinica cadastrada</returns>
+        </member>
+        <member name="M:sp_Medical_group.Web.Api.Controllers.ClinicasController.Deletar(System.Int16)">
+            <summary>
+            Deletar uma clinica
+            </summary>
+            <param name="idClinica">ID da clinica deletada</param>
+            <returns>Clinica deletada</returns>
+        </member>
+        <member name="M:sp_Medical_group.Web.Api.Controllers.ConsultasController.Cadastrar(sp_Medical_group.Web.Api.Domains.Consulta)">
+            <summary>
+            Cadastrar uma nova consulta
+            </summary>
+            <param name="novaConsulta">Dados da noca consulta da nova consulta cadastrada</param>
+            <returns>Consulta cadastrada</returns>
+        </member>
+        <member name="M:sp_Medical_group.Web.Api.Controllers.ConsultasController.ListarTodos">
+            <summary>
+            Lista todas as consultas
+            </summary>
+            <returns>Uma lista de consultas</returns>
+        </member>
+        <member name="M:sp_Medical_group.Web.Api.Controllers.ConsultasController.ConsultaMedico">
+            <summary>
+            Lita as consultas o medico
+            </summary>
+            <returns>Uma lista de um determinado medico</returns>
+        </member>
+        <member name="M:sp_Medical_group.Web.Api.Controllers.ConsultasController.ConsultaPaciente">
+            <summary>
+            Lista as consultas o paciente
+            </summary>
+            <returns>Uma conquista e um determinado paciente</returns>
+        </member>
+        <member name="M:sp_Medical_group.Web.Api.Controllers.ConsultasController.MudarDescricao(System.Int16,sp_Medical_group.Web.Api.Domains.Consulta)">
+            <summary>
+            Muda a descricao de uma determinada consulta
+            </summary>
+            <param name="id">ID da consulta atualizada</param>
+            <param name="novaDescricao">Nova descricao da consulta</param>
+            <returns>Uma nova descricao de uma determinaa consulta</returns>
+        </member>
+        <member name="M:sp_Medical_group.Web.Api.Controllers.ConsultasController.MudarSituacao(System.Int16,sp_Medical_group.Web.Api.Domains.Consulta)">
+            <summary>
+            Muda a situacao de uma determinada consulta
+            </summary>
+            <param name="id">ID da consulta atualizada</param>
+            <param name="novaSituacao">Nova situacao da consulta</param>
+            <returns>Uma consulta com uma nova situacao</returns>
+        </member>
+        <member name="M:sp_Medical_group.Web.Api.Controllers.ConsultasController.Deletar(System.Int16)">
+            <summary>
+            Deleta uma consulta
+            </summary>
+            <param name="id">ID da consulta deletada</param>
+            <returns>Uma consulta deletada</returns>
+        </member>
+        <member name="M:sp_Medical_group.Web.Api.Controllers.ConsultasController.Atualizar(System.Int16,sp_Medical_group.Web.Api.Domains.Consulta)">
+            <summary>
+            Atualiza os dados de uma determianda consulta
+            </summary>
+            <param name="id">ID da consulta atualizada</param>
+            <param name="consultaAtualizada">Dados da consulta ataulizada</param>
+            <returns>Uma consulta com os dados atualizados</returns>
+        </member>
+        <member name="M:sp_Medical_group.Web.Api.Controllers.ConsultasController.Buscar(System.Int16)">
+            <summary>
+            Busca uma determinada consulta pelo seu id
+            </summary>
+            <param name="id">ID da consulta buscada</param>
+            <returns>A consulta buscada</returns>
+        </member>
+        <member name="M:sp_Medical_group.Web.Api.Controllers.UsuariosController.Cadastrar(sp_Medical_group.Web.Api.Domains.Usuario)">
+            <summary>
+            Cadastra um novo usuario
+            </summary>
+            <param name="novoUsuario">Dados do usuario cadastrado</param>
+            <returns>Um novo usuario cadastrado</returns>
+        </member>
+        <member name="M:sp_Medical_group.Web.Api.Controllers.UsuariosController.Deletar(System.Int16)">
+            <summary>
+            Deleta um usuario existente
+            </summary>
+            <param name="idUsuario">ID do usuario a ser deletado</param>
+            <returns>Um usuario deletado</returns>
+        </member>
         <member name="T:sp_Medical_group.Web.Api.Interfaces.IClinicaRepository">
             <summary>
             interface reponsavel pelo ClinicaRepository
@@ -31,6 +122,26 @@
             Cadastrar uma nova consulta
             </summary>
             <param name="novaConsulta"> Objeto de uma nova consulta</param>
+        </member>
+        <member name="M:sp_Medical_group.Web.Api.Interfaces.IConsultaRepository.Deletar(System.Int16)">
+            <summary>
+            Deletar uma consulta
+            </summary>
+            <param name="idConsulta">id da consulta deletada</param>
+        </member>
+        <member name="M:sp_Medical_group.Web.Api.Interfaces.IConsultaRepository.Atualizar(System.Int16,sp_Medical_group.Web.Api.Domains.Consulta)">
+            <summary>
+            Atualizar dados da Consulta
+            </summary>
+            <param name="idConsulta">Id da consulta Atualizada</param>
+            <param name="consultaAtualizada">Dados Atualizados</param>
+        </member>
+        <member name="M:sp_Medical_group.Web.Api.Interfaces.IConsultaRepository.BuscarConsulta(System.Int16)">
+            <summary>
+            Buscar uma consulta existente
+            </summary>
+            <param name="idConsulta">Id da consulta buscada</param>
+            <returns>Retorna a consulta cadastrada</returns>
         </member>
         <member name="M:sp_Medical_group.Web.Api.Interfaces.IConsultaRepository.ListarTodos">
             <summary>

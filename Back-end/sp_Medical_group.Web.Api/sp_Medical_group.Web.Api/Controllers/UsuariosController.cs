@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using sp_Medical_group.Web.Api.Domains;
 using sp_Medical_group.Web.Api.Interfaces;
@@ -22,6 +23,12 @@ namespace sp_Medical_group.Web.Api.Controllers
             _usuarioRepository = new UsuarioRepository();
         }
 
+        /// <summary>
+        /// Cadastra um novo usuario
+        /// </summary>
+        /// <param name="novoUsuario">Dados do usuario cadastrado</param>
+        /// <returns>Um novo usuario cadastrado</returns>
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Cadastrar(Usuario novoUsuario)
         {
@@ -30,12 +37,28 @@ namespace sp_Medical_group.Web.Api.Controllers
             return StatusCode(201);
         }
 
+        /// <summary>
+        /// Deleta um usuario existente
+        /// </summary>
+        /// <param name="idUsuario">ID do usuario a ser deletado</param>
+        /// <returns>Um usuario deletado</returns>
+        [Authorize(Roles = "1")]
         [HttpDelete("deletar/{idUsuario}")]
         public IActionResult Deletar(short idUsuario)
         {
-            _usuarioRepository.Deletar(idUsuario);
+            try
+            {
+                _usuarioRepository.Deletar(idUsuario);
 
-            return Ok();
+                return Ok();
+
+            }
+            catch (Exception erro)
+            {
+
+                return BadRequest(erro);
+               
+            }
         }
     }
 }

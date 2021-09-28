@@ -27,6 +27,10 @@ namespace sp_Medical_group.Web.Api.Repositories
         public void Deletar(short idUsuario)
         {
             Usuario usuarioBuscado = ctx.Usuarios.FirstOrDefault(u => u.IdUsuario == idUsuario);
+            if (usuarioBuscado == null)
+            {
+                throw new Exception("Id nao existente");
+            }
             ctx.Usuarios.Remove(usuarioBuscado);
             ctx.SaveChanges();
         }
