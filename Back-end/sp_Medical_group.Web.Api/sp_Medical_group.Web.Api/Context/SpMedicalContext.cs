@@ -32,8 +32,9 @@ namespace sp_Medical_group.Web.Api.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-L3Q203S\\SQLEXPRESS; Initial Catalog=Projeto_SP_Med_Group; user id=sa; pwd=senai@132;");
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+               // optionsBuilder.UseSqlServer("Data Source=DESKTOP-L3Q203S\\SQLEXPRESS; Initial Catalog=Projeto_SP_Med_Group; user id=sa; pwd=senai@132;");
+                optionsBuilder.UseSqlServer("Server=tcp:spmedicalgroupjoao.database.windows.net,1433;Initial Catalog=Sp_medical_group;Persist Security Info=False;User ID=senai-joao;Password=Jpnr2004$;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
 

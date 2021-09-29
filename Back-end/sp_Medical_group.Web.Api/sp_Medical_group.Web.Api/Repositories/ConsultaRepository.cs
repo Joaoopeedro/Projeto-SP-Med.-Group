@@ -68,15 +68,18 @@ namespace sp_Medical_group.Web.Api.Repositories
                             DataConsulta = c.DataConsulta,
                             IdMedico = c.IdMedico,
                             Descricao = c.Descricao,
-                            IdMedicoNavigation = new Medico()
+                            IdPacienteNavigation = new Paciente()
                             {
-                                NomeMedico = c.IdMedicoNavigation.NomeMedico,
-                                Crm = c.IdMedicoNavigation.Crm,
-                                IdEspecializacao = c.IdMedicoNavigation.IdEspecializacao
-                                
+                                NomePaciente = c.IdPacienteNavigation.NomePaciente,
+                                IdadePaciente = c.IdPacienteNavigation.IdadePaciente,
+                                Telefone = c.IdPacienteNavigation.Telefone,
+                                Endereco = c.IdPacienteNavigation.Endereco,
+                                DataNascimento = c.IdPacienteNavigation.DataNascimento,
+                                Cpf = c.IdPacienteNavigation.Cpf,
+                                Rg = c.IdPacienteNavigation.Rg
 
                             }
-                           
+
                         })
                         .Where(c => c.IdMedico == idMedico).ToList();
                     
@@ -91,17 +94,15 @@ namespace sp_Medical_group.Web.Api.Repositories
                             DataConsulta = c.DataConsulta,
                             IdMedico = c.IdMedico,
                             Descricao = c.Descricao,
-                            IdPacienteNavigation = new Paciente()
+                            IdMedicoNavigation = new Medico()
                             {
-                                NomePaciente = c.IdPacienteNavigation.NomePaciente,
-                                IdadePaciente = c.IdPacienteNavigation.IdadePaciente,
-                                Telefone = c.IdPacienteNavigation.Telefone,
-                                Endereco = c.IdPacienteNavigation.Endereco,
-                                DataNascimento = c.IdPacienteNavigation.DataNascimento,
-                                Cpf = c.IdPacienteNavigation.Cpf,
-                                Rg = c.IdPacienteNavigation.Rg
-                                
+                                NomeMedico = c.IdMedicoNavigation.NomeMedico,
+                                Crm = c.IdMedicoNavigation.Crm,
+                                IdEspecializacao = c.IdMedicoNavigation.IdEspecializacao
+
+
                             }
+                            
 
                         })
                         .Where(c => c.IdPaciente == idPaciente).ToList();

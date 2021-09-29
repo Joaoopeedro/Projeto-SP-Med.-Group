@@ -4,6 +4,7 @@
     <Controller_SelectedScaffolderID>ApiControllerEmptyScaffolder</Controller_SelectedScaffolderID>
     <Controller_SelectedScaffolderCategoryPath>root/Common/Api</Controller_SelectedScaffolderCategoryPath>
     <ActiveDebugProfile>sp_Medical_group.Web.Api</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\user\Documents\2°semestre- SENAI\Projetos\Projeto-SP-Med.-Group\Back-end\sp_Medical_group.Web.Api\sp_Medical_group.Web.Api\Properties\PublishProfiles\spmedicalgpJoao - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
