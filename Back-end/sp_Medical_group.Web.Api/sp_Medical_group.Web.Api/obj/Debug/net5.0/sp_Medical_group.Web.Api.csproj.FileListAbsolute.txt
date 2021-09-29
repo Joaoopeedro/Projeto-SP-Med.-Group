@@ -67,3 +67,4 @@ C:\Users\user\Documents\2°semestre- SENAI\Projetos\Projeto-SP-Med.-Group\Back-e
 C:\Users\user\Documents\2°semestre- SENAI\Projetos\Projeto-SP-Med.-Group\Back-end\sp_Medical_group.Web.Api\sp_Medical_group.Web.Api\obj\Debug\net5.0\sp_Medical_group.Web.Api.xml
 C:\Users\user\Documents\2°semestre- SENAI\Projetos\Projeto-SP-Med.-Group\Back-end\sp_Medical_group.Web.Api\sp_Medical_group.Web.Api\obj\Debug\net5.0\sp_Medical_group.Web.Api.pdb
 C:\Users\user\Documents\2°semestre- SENAI\Projetos\Projeto-SP-Med.-Group\Back-end\sp_Medical_group.Web.Api\sp_Medical_group.Web.Api\obj\Debug\net5.0\sp_Medical_group.Web.Api.genruntimeconfig.cache
+C:\Users\user\Documents\2°semestre- SENAI\Projetos\Projeto-SP-Med.-Group\Back-end\sp_Medical_group.Web.Api\sp_Medical_group.Web.Api\bin\Debug\net5.0\libman.json

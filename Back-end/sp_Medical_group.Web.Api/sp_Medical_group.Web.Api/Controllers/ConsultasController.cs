@@ -32,7 +32,7 @@ namespace sp_Medical_group.Web.Api.Controllers
         /// <returns>Consulta cadastrada</returns>
         [Authorize(Roles = "1")]
         [HttpPost]
-        public IActionResult Cadastrar(Consulta novaConsulta)
+        public IActionResult Cadastrar(Consultum novaConsulta)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace sp_Medical_group.Web.Api.Controllers
             {
                 short id = Convert.ToInt16(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
                 short idTipo = Convert.ToInt16(HttpContext.User.Claims.First(c => c.Type == ClaimTypes.Role).Value);
-                List<Consulta> listaConsulta = _consultaRepository.ListarMinhas(id,idTipo);
+                List<Consultum> listaConsulta = _consultaRepository.ListarMinhas(id,idTipo);
 
                 if (listaConsulta.Count == 0)
                 {
@@ -114,11 +114,11 @@ namespace sp_Medical_group.Web.Api.Controllers
         /// <returns>Uma nova descricao de uma determinaa consulta</returns>
         [Authorize(Roles = "3")]
         [HttpPatch("Descricao/{id}")]
-        public IActionResult MudarDescricao(short id, Consulta novaDescricao)
+        public IActionResult MudarDescricao(short id, Consultum novaDescricao)
         {
             try
             {
-                Consulta consultaBuscada = _consultaRepository.BuscarConsulta(id);
+                Consultum consultaBuscada = _consultaRepository.BuscarConsulta(id);
                 short idMedico = Convert.ToInt16(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
                 if (consultaBuscada.IdMedico != idMedico)
                 {
@@ -162,7 +162,7 @@ namespace sp_Medical_group.Web.Api.Controllers
         /// <returns>Uma consulta com uma nova situacao</returns>
         [Authorize(Roles = "1")]
         [HttpPatch("Situacao/{id}")]
-        public IActionResult MudarSituacao(short id, Consulta novaSituacao)
+        public IActionResult MudarSituacao(short id, Consultum novaSituacao)
         {
             try
             {
@@ -223,7 +223,7 @@ namespace sp_Medical_group.Web.Api.Controllers
         /// <returns>Uma consulta com os dados atualizados</returns>
         [Authorize(Roles = "1")]
         [HttpPut("{id}")]
-        public IActionResult Atualizar(short id, Consulta consultaAtualizada)
+        public IActionResult Atualizar(short id, Consultum consultaAtualizada)
         {
             _consultaRepository.Atualizar(Convert.ToInt16(id), consultaAtualizada);
 

@@ -16,7 +16,7 @@ namespace sp_Medical_group.Web.Api.Interfaces
         /// Cadastrar uma nova consulta
         /// </summary>
         /// <param name="novaConsulta"> Objeto de uma nova consulta</param>
-        void Cadastrar(Consulta novaConsulta);
+        void Cadastrar(Consultum novaConsulta);
 
         /// <summary>
         /// Deletar uma consulta
@@ -29,20 +29,20 @@ namespace sp_Medical_group.Web.Api.Interfaces
         /// </summary>
         /// <param name="idConsulta">Id da consulta Atualizada</param>
         /// <param name="consultaAtualizada">Dados Atualizados</param>
-        void Atualizar(short idConsulta,Consulta consultaAtualizada);
+        void Atualizar(short idConsulta, Consultum consultaAtualizada);
 
         /// <summary>
         /// Buscar uma consulta existente
         /// </summary>
         /// <param name="idConsulta">Id da consulta buscada</param>
         /// <returns>Retorna a consulta cadastrada</returns>
-        Consulta BuscarConsulta(short idConsulta);
+        Consultum BuscarConsulta(short idConsulta);
 
         /// <summary>
         /// Listar todas as consultas
         /// </summary>
         /// <returns>Lista de consultas</returns>
-        List<Consulta> ListarTodos();
+        List<Consultum> ListarTodos();
 
         /// <summary>
         /// Listar todas as consultas do medico e do paciente pelo seu id gerado no Token
@@ -50,7 +50,7 @@ namespace sp_Medical_group.Web.Api.Interfaces
         /// <param name="id">ID do medico ou do paciente</param>
         /// <param name="idTipo">Id do tipo de usuario</param>
         /// <returns>Um lista dependendo do ID do usuario</returns>
-        List<Consulta> ListarMinhas(short id,short idTipo);
+        List<Consultum> ListarMinhas(short id,short idTipo);
 
   
 

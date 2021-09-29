@@ -20,9 +20,9 @@ namespace sp_Medical_group.Web.Api.Repositories
         /// </summary>
         SpMedicalContext ctx = new();
 
-        public void Atualizar(short idConsulta, Consulta consultaAtualizada)
+        public void Atualizar(short idConsulta, Consultum consultaAtualizada)
         {
-            Consulta consultaBuscada = ctx.Consulta.Find(idConsulta);
+            Consultum consultaBuscada = ctx.Consulta.Find(idConsulta);
 
             if (consultaAtualizada.IdPaciente > 0||consultaAtualizada.IdMedico > 0|| consultaAtualizada.DataConsulta > DateTime.Now)
             {
@@ -35,12 +35,12 @@ namespace sp_Medical_group.Web.Api.Repositories
             }
         }
 
-        public Consulta BuscarConsulta(short idConsulta)
+        public Consultum BuscarConsulta(short idConsulta)
         {
             return ctx.Consulta.FirstOrDefault(c => c.IdConsulta == idConsulta);
         }
 
-        public void Cadastrar(Consulta novaConsulta)
+        public void Cadastrar(Consultum novaConsulta)
         {
 
             novaConsulta.Descricao = "sem descrição definida";
@@ -55,7 +55,7 @@ namespace sp_Medical_group.Web.Api.Repositories
             ctx.SaveChanges();
         }
 
-        public List<Consulta> ListarMinhas(short id, short idTipo)
+        public List<Consultum> ListarMinhas(short id, short idTipo)
         {
             switch (idTipo)
             {
@@ -63,7 +63,7 @@ namespace sp_Medical_group.Web.Api.Repositories
                     Medico medico = ctx.Medicos.FirstOrDefault(m => m.IdUsuario == id);
                     short idMedico = medico.IdMedico;
                     return ctx.Consulta
-                        .Select(c => new Consulta() {
+                        .Select(c => new Consultum() {
                             IdConsulta = c.IdConsulta,
                             DataConsulta = c.DataConsulta,
                             IdMedico = c.IdMedico,
@@ -85,7 +85,7 @@ namespace sp_Medical_group.Web.Api.Repositories
                     Paciente paciente = ctx.Pacientes.FirstOrDefault(p => p.IdPaciente == id);
                     short idPaciente = paciente.IdPaciente;
                     return ctx.Consulta
-                        .Select(c => new Consulta()
+                        .Select(c => new Consultum()
                         {
                             IdConsulta = c.IdConsulta,
                             DataConsulta = c.DataConsulta,
@@ -114,10 +114,10 @@ namespace sp_Medical_group.Web.Api.Repositories
 
       
 
-        public List<Consulta> ListarTodos()
+        public List<Consultum> ListarTodos()
         {
             return ctx.Consulta
-                .Select(u => new Consulta()
+                .Select(u => new Consultum()
                 {
                     IdConsulta = u.IdConsulta,
                     IdPaciente = u.IdPaciente,
@@ -151,7 +151,7 @@ namespace sp_Medical_group.Web.Api.Repositories
 
         public void MudarDescricao(short idConsulta, string descricao)
         {
-            Consulta consultaBuscada = ctx.Consulta.FirstOrDefault(c => c.IdConsulta == idConsulta);
+            Consultum consultaBuscada = ctx.Consulta.FirstOrDefault(c => c.IdConsulta == idConsulta);
 
             consultaBuscada.Descricao = descricao;
             ctx.Consulta.Update(consultaBuscada);
@@ -160,7 +160,7 @@ namespace sp_Medical_group.Web.Api.Repositories
 
         public void MudarSituacao(short idConsulta, short idSituacao)
         {
-            Consulta consultaBuscada = ctx.Consulta.FirstOrDefault(c => c.IdConsulta == idConsulta);
+            Consultum consultaBuscada = ctx.Consulta.FirstOrDefault(c => c.IdConsulta == idConsulta);
 
             consultaBuscada.IdSituacao = idSituacao;
             ctx.Consulta.Update(consultaBuscada);

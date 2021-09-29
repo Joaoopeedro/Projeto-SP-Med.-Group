@@ -18,7 +18,7 @@
             <param name="idClinica">ID da clinica deletada</param>
             <returns>Clinica deletada</returns>
         </member>
-        <member name="M:sp_Medical_group.Web.Api.Controllers.ConsultasController.Cadastrar(sp_Medical_group.Web.Api.Domains.Consulta)">
+        <member name="M:sp_Medical_group.Web.Api.Controllers.ConsultasController.Cadastrar(sp_Medical_group.Web.Api.Domains.Consultum)">
             <summary>
             Cadastrar uma nova consulta
             </summary>
@@ -37,7 +37,7 @@
             </summary>
             <returns>Uma lista de um determinado medico</returns>
         </member>
-        <member name="M:sp_Medical_group.Web.Api.Controllers.ConsultasController.MudarDescricao(System.Int16,sp_Medical_group.Web.Api.Domains.Consulta)">
+        <member name="M:sp_Medical_group.Web.Api.Controllers.ConsultasController.MudarDescricao(System.Int16,sp_Medical_group.Web.Api.Domains.Consultum)">
             <summary>
             Muda a descricao de uma determinada consulta
             </summary>
@@ -45,7 +45,7 @@
             <param name="novaDescricao">Nova descricao da consulta</param>
             <returns>Uma nova descricao de uma determinaa consulta</returns>
         </member>
-        <member name="M:sp_Medical_group.Web.Api.Controllers.ConsultasController.MudarSituacao(System.Int16,sp_Medical_group.Web.Api.Domains.Consulta)">
+        <member name="M:sp_Medical_group.Web.Api.Controllers.ConsultasController.MudarSituacao(System.Int16,sp_Medical_group.Web.Api.Domains.Consultum)">
             <summary>
             Muda a situacao de uma determinada consulta
             </summary>
@@ -60,7 +60,7 @@
             <param name="id">ID da consulta deletada</param>
             <returns>Uma consulta deletada</returns>
         </member>
-        <member name="M:sp_Medical_group.Web.Api.Controllers.ConsultasController.Atualizar(System.Int16,sp_Medical_group.Web.Api.Domains.Consulta)">
+        <member name="M:sp_Medical_group.Web.Api.Controllers.ConsultasController.Atualizar(System.Int16,sp_Medical_group.Web.Api.Domains.Consultum)">
             <summary>
             Atualiza os dados de uma determianda consulta
             </summary>
@@ -188,7 +188,7 @@
             Interface responsavel pelo ConsultaRepository
             </summary>
         </member>
-        <member name="M:sp_Medical_group.Web.Api.Interfaces.IConsultaRepository.Cadastrar(sp_Medical_group.Web.Api.Domains.Consulta)">
+        <member name="M:sp_Medical_group.Web.Api.Interfaces.IConsultaRepository.Cadastrar(sp_Medical_group.Web.Api.Domains.Consultum)">
             <summary>
             Cadastrar uma nova consulta
             </summary>
@@ -200,7 +200,7 @@
             </summary>
             <param name="idConsulta">id da consulta deletada</param>
         </member>
-        <member name="M:sp_Medical_group.Web.Api.Interfaces.IConsultaRepository.Atualizar(System.Int16,sp_Medical_group.Web.Api.Domains.Consulta)">
+        <member name="M:sp_Medical_group.Web.Api.Interfaces.IConsultaRepository.Atualizar(System.Int16,sp_Medical_group.Web.Api.Domains.Consultum)">
             <summary>
             Atualizar dados da Consulta
             </summary>
@@ -333,7 +333,7 @@
             <summary>
             Cadastrar um novo  Usuario
             </summary>
-            <param name="novoTipo">Objeto do novo  Usuario</param>
+            <param name="novoUsuario">Objeto do novo  Usuario</param>
         </member>
         <member name="M:sp_Medical_group.Web.Api.Interfaces.IUsuarioRepository.Deletar(System.Int16)">
             <summary>
@@ -347,6 +347,20 @@
             </summary>
             <param name="id">Id do Usuario buscado</param>
             <returns>Um usuario r</returns>
+        </member>
+        <member name="M:sp_Medical_group.Web.Api.Interfaces.IUsuarioRepository.SalvarPerfilBD(Microsoft.AspNetCore.Http.IFormFile,System.Int16)">
+            <summary>
+            Salvar uma imagem do perdil no banco de dados 
+            </summary>
+            <param name="foto">Imagem que sera salvada</param>
+            <param name="idUsuario">ID do usuario que a imagem ira ser salva</param>
+        </member>
+        <member name="M:sp_Medical_group.Web.Api.Interfaces.IUsuarioRepository.ConsultarPerfilBD(System.Int16)">
+            <summary>
+            Consultar uma imagem pelo BD
+            </summary>
+            <param name="idUsuario">ID do usuario que esta consultando</param>
+            <returns>Um Perfil</returns>
         </member>
         <member name="T:sp_Medical_group.Web.Api.Repositories.ClinicaRepository">
             <summary>

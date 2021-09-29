@@ -19,8 +19,9 @@ namespace sp_Medical_group.Web.Api.Context
         }
 
         public virtual DbSet<Clinica> Clinicas { get; set; }
-        public virtual DbSet<Consulta> Consulta { get; set; }
+        public virtual DbSet<Consultum> Consulta { get; set; }
         public virtual DbSet<Especializacao> Especializacaos { get; set; }
+        public virtual DbSet<ImagemUsuario> ImagemUsuarios { get; set; }
         public virtual DbSet<Medico> Medicos { get; set; }
         public virtual DbSet<Paciente> Pacientes { get; set; }
         public virtual DbSet<Situacao> Situacaos { get; set; }
@@ -31,7 +32,7 @@ namespace sp_Medical_group.Web.Api.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Data Source=DESKTOP-L3Q203S\\SQLEXPRESS; Initial Catalog=Projeto_SP_Med_Group; user id=sa; pwd=senai@132;");
             }
         }
@@ -84,7 +85,7 @@ namespace sp_Medical_group.Web.Api.Context
                     .HasColumnName("razaoSocial");
             });
 
-            modelBuilder.Entity<Consulta>(entity =>
+            modelBuilder.Entity<Consultum>(entity =>
             {
                 entity.HasKey(e => e.IdConsulta)
                     .HasName("PK__consulta__CA9C61F541BAE3B7");
@@ -143,6 +144,45 @@ namespace sp_Medical_group.Web.Api.Context
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("tipoEspecializacao");
+            });
+
+            modelBuilder.Entity<ImagemUsuario>(entity =>
+            {
+                entity.ToTable("imagemUsuario");
+
+                entity.HasIndex(e => e.IdUsuario, "UQ__imagemUs__645723A78747B38B")
+                    .IsUnique();
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Binario)
+                    .IsRequired()
+                    .HasColumnName("binario");
+
+                entity.Property(e => e.DataInclusao)
+                    .HasColumnType("datetime")
+                    .HasColumnName("data_inclusao")
+                    .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
+
+                entity.Property(e => e.MimeType)
+                    .IsRequired()
+                    .HasMaxLength(30)
+                    .IsUnicode(false)
+                    .HasColumnName("mimeType");
+
+                entity.Property(e => e.NomeArquivo)
+                    .IsRequired()
+                    .HasMaxLength(250)
+                    .IsUnicode(false)
+                    .HasColumnName("nomeArquivo");
+
+                entity.HasOne(d => d.IdUsuarioNavigation)
+                    .WithOne(p => p.ImagemUsuario)
+                    .HasForeignKey<ImagemUsuario>(d => d.IdUsuario)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__imagemUsu__idUsu__3587F3E0");
             });
 
             modelBuilder.Entity<Medico>(entity =>
