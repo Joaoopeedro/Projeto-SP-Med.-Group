@@ -66,6 +66,7 @@ namespace sp_Medical_group.Web.Api.Repositories
                         .Select(c => new Consultum() {
                             IdConsulta = c.IdConsulta,
                             DataConsulta = c.DataConsulta,
+                            IdSituacao = c.IdSituacao,
                             IdMedico = c.IdMedico,
                             Descricao = c.Descricao,
                             IdPacienteNavigation = new Paciente()
@@ -92,6 +93,7 @@ namespace sp_Medical_group.Web.Api.Repositories
                         {
                             IdConsulta = c.IdConsulta,
                             DataConsulta = c.DataConsulta,
+                            IdSituacao = c.IdSituacao,
                             IdMedico = c.IdMedico,
                             Descricao = c.Descricao,
                             IdMedicoNavigation = new Medico()
