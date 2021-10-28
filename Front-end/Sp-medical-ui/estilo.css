@@ -6,6 +6,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+.container{
+    width: 1200px;
+    margin: 0 auto;
+}
 
 /* LOGIN */
 
@@ -73,3 +77,245 @@
     margin-top: 70px;
     
 }
+
+/* HOME */
+
+.header_Home{
+    width: 1440px;
+    height: 101px;
+}
+
+.div_header{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.img_header{
+    width: 120px;
+    height: 104px;
+}
+.org_header{
+    width: 380px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.org_header a{
+    color: #247DBD;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 34px;
+}
+.login-header{
+    border: 3px solid #1D05AF;
+    height: 56px;
+    width: 117px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.main_home{
+    background-image: url("./assets/imagem\ de\ bem\ vindo.jpg");
+}
+
+.banner_home{
+    background-image: url("./assets/imagem\ de\ bem\ vindo.jpg");
+    
+    height: 664px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+.banner_home h1{
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 68px;
+}
+.banner_home hr{
+    width: 540px;
+    height: 0px;
+    border: 2px solid #FFFFFF;
+    
+}
+.banner_home p{
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 27px;
+}
+.org_banner{
+    width: 540px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.banner-contato{
+    background-color: #237DBD;
+    /* clip-path: polygon(0 0, 100% 0, 100% 76%, 0 94%); */
+    clip-path: polygon(0 0, 100% 0, 100% 79%, 0 100%);
+    /* width: 1440px; */
+    height: 459px;  
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+.org_contato{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+.org_contato h2{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 54px;
+    color: white;
+}
+.org_contato hr{
+    width: 410px;
+    height: 0px;
+    color: black;
+
+    border: 3px solid #000000;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+.org_contato img{
+    width: 33px;
+    height: 28px;
+}
+.org_cont{
+    width: 300px;
+    height: 41px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+
+}
+.org_cont p{
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    line-height: 41px
+}
+
+.divisao_home{
+    background-image: url("./assets/imagem\ de\ bem\ vindo.jpg");
+    height: 126px;
+    
+    
+}
+
+.banner_endereco{
+    height: 459px;
+    background-color: #237DBD;
+    clip-path: polygon(0 20%, 100% 4%, 100% 100%, 0 100%);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.banner_endereco h2{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 54px;
+    color: white;
+}
+.banner_endereco hr{
+    width: 410px;
+    height: 0px;
+    color: black;
+
+    border: 3px solid #000000;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.org_endereco{
+    
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+.org_endereco ul{
+    color: black;
+    width: 12px;
+    height: 12px;
+}
+.org_endereco li{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 27px;
+    color: white;
+    
+}
+footer{
+    
+    height: 162px;
+    background: #FFFFFF;
+    
+    
+}
+.org_footer{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    box-sizing: border-box;
+}
+.logo_footer img{
+    width: 120px;
+    height: 104px;  
+}
+.descricao_footer p{
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 27px;
+    color: #000000;
+}
+.descricao_footer{
+    width: 400px;
+    display: flex;
+    justify-content: flex-end;
+}
+.org_redes{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.org_redes img{
+    width: 81px;
+    height: 81px;
+}
+
