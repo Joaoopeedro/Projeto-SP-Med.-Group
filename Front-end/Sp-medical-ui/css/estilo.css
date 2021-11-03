@@ -81,12 +81,13 @@
 /* HOME */
 
 .header_Home{
-    width: 1440px;
+    
     height: 101px;
+    
 }
 
 .div_header{
-    width: 100%;
+    
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -123,11 +124,11 @@
 }
 
 .main_home{
-    background-image: url("./assets/imagem\ de\ bem\ vindo.jpg");
+    background-image: url("../assets/imagem\ de\ bem\ vindo.jpg");
 }
 
 .banner_home{
-    background-image: url("./assets/imagem\ de\ bem\ vindo.jpg");
+    background-image: url("../assets/imagem\ de\ bem\ vindo.jpg");
     
     height: 664px;
     display: flex;
@@ -222,7 +223,7 @@
 }
 
 .divisao_home{
-    background-image: url("./assets/imagem\ de\ bem\ vindo.jpg");
+    background-image: url("../assets/imagem\ de\ bem\ vindo.jpg");
     height: 126px;
     
     
@@ -319,3 +320,109 @@ footer{
     height: 81px;
 }
 
+
+/* Adm cadastro */
+
+.org_heade_adm{
+    width: 630px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.org_heade_adm a{
+    color: #247DBD;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 34px;
+}
+
+.main_adm{
+    background-image: url("../assets/Rectangle\ 17.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.org_cadastro{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 41px;
+
+    /* identical to box height */
+
+    color: #FFFFFF;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+
+}
+.org_cadastro h2{
+    margin-top: 31px;
+    margin-bottom: 31px;
+}
+
+.org_cadastro form{
+    width: 1200px;
+    height: 744px;
+    left: 222px;
+    top: 265px;
+    
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+
+}
+.org_cadastro input{
+    width: 553px;
+    height: 57px;
+    background-color: #237DBD6B;
+    color: black;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 34px;
+    padding-left: 10px;
+    
+}
+
+.bnt_cadastrar{
+    width: 290px;
+    height: 73px;
+    background-color: rgba(40, 94, 189, 0.69);
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 34px;
+
+    /* identical to box height */
+
+    color: #000000;
+
+
+}
+
+.hr_cadastrar hr{
+    width: 1200px;
+    height: 0px;
+    border: 2px solid #000000;
+    transform: rotate(-0.12deg);
+    margin-top: 76px;
+    margin-bottom: 87px;
+}
