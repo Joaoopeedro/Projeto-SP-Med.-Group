@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/estilo.css">
-    <title>Cadastro de consulta</title>
+    <title>Medico</title>
 </head>
-
 <body>
     <header class=" container header_Home">
         <div class=" div_header container">
@@ -18,40 +16,23 @@
             <div class="org_heade_adm">
                 <a href="">Home</a>
                 <a href="">Consultas</a>
-                <a href="">Cadastrar Usuario</a>
-                <a href="">Adminitrador</a>
+                <a href="">Relatorio</a>
+                <a href="">Médico</a>
 
 
             </div>
         </div>
     </header>
-    <main class="main_adm">
+    <main class="main_medico">
         <section class="container">
-            <div class="org_cadastro">
-                <h2>Cadastrar Consulta</h2>
-                <form>
-                    <input type="text" placeholder="Nome Paciente"></input>
-                    <input type="text" placeholder="Nome Medico"></input>
-                    <input type="date" placeholder="Data da consulta"></input>
-                    <input type="text" placeholder="Descricao"></input>
-                    <input type="text" placeholder="Situação"></input>
-
-                    <button type="submit" class="bnt_cadastrar">Cadastrar</button>
-                </form>
-            </div>
-        </section>
-        <section class="hr_cadastrar">
-            <hr />
-        </section>
-        <section class="container">
-            <div class="org_tabela_adm">
+            <div class="org_tabela_medico">
                 <h2>Lista de Consultas</h2>
-                <table class="tabela_adm">
+                <table class="tabela_medico">
                     <thead>
                         <tr>
                             <th>Paciente</th>
-                            <th>Médico</th>
                             <th>Data da consulta</th>
+                            <th>Idade Paciente</th>
                             <th>Descrição</th>
                             <th>Situação</th>
                             <th>Editar</th>
@@ -63,22 +44,19 @@
 
                         <tr>
                             <td>joao</td>
-                            <td>lucas</td>
                             <td>12/02/2022</td>
+                            <td>30 anos</td>
                             <td>Atendimento normal</td>
                             <td>normal</td>
-                            <td class="bnt_editar_adm"><button>Editar</button></td>
+                            <td class="bnt_editar_medico"><button>Editar</button></td>
 
 
                         </tr>
-                      
-                       
-                       
-
                     </tbody>
                 </table>
             </div>
         </section>
+
     </main>
     <footer  class="container">
         <div class=" org_footer">
@@ -95,7 +73,6 @@
             </div>
         </div>
     </footer>
-
+    
 </body>
-
 </html>
