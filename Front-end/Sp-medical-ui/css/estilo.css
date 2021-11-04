@@ -392,7 +392,7 @@ footer{
     height: 57px;
     background-color: #237DBD6B;
     color: black;
-    font-family: Open Sans;
+    font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 25px;
@@ -405,7 +405,7 @@ footer{
     width: 290px;
     height: 73px;
     background-color: rgba(40, 94, 189, 0.69);
-    font-family: Open Sans;
+    font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 25px;
@@ -417,6 +417,13 @@ footer{
 
 
 }
+.bnt_cadastrar :hover{
+    transform: translateY(-8px);
+    transition: 0.5s;
+    
+
+
+}
 
 .hr_cadastrar hr{
     width: 1200px;
@@ -425,4 +432,71 @@ footer{
     transform: rotate(-0.12deg);
     margin-top: 76px;
     margin-bottom: 87px;
+}
+.org_tabela_adm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.org_tabela_adm h2{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 41px;
+    color: #FFFFFF;
+    margin-bottom: 21px;
+}
+.tabela_adm{
+    width: 1200px;
+    margin-bottom: 100px;
+}
+
+.tabela_adm thead{
+    height: 89px;
+    background-color: #237DBD;
+   
+    
+}
+.tabela_adm tbody{
+    
+    background: rgba(255, 255, 255, 0.74);
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; */
+}
+
+.tabela_adm th{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    color: #FFFFFF;
+    width: 400px;
+
+    
+}
+.tabela_adm td{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 20px;
+    color: #000000;
+    
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 400px;
+}
+
+.bnt_editar_adm button{
+    background-color: #237DBD;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+
 }
