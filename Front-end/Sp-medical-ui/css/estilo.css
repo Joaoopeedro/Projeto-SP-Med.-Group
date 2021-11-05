@@ -14,24 +14,37 @@
 /* LOGIN */
 
 .imagem_login{
-    background-image: url("../assets/imagem_login.png");
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.esq_login
+{
+    
     height: 1024px;
     width: 860px;
     background-size: cover;
     
     
 }
-
-.fundo_login{
+.esq_login img{
+        
+}
+.dir_login{
     background-color: #247DBD;
     
     height: 100%;
     width: 167.7%;
-    margin-left: 24vw;
     clip-path: polygon(27% 0, 100% 0%, 100% 100%, 6% 100%);
     display: flex;
     justify-content: center;
     align-items: center;
+
+}
+
+.fundo_login{
+
 
 }
 .form_login{
@@ -667,3 +680,80 @@ footer{
     font-family: 'Open Sans', sans-serif;
 
 }
+
+
+
+/* PACIENTE */
+
+.main_paciente{
+    background-image: url("../assets/Rectangle\ 37.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.org_tabela_paciente{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.org_tabela_paciente h2{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 41px;
+    color: #FFFFFF;
+    margin-bottom: 31px;
+    margin-top: 31px;
+}
+.tabela_paciente{
+    width: 1200px;
+    margin-bottom: 200px;
+}
+
+.tabela_paciente thead{
+    height: 89px;
+    background-color: #237DBD;
+   
+    
+}
+.tabela_paciente tbody{
+    
+    background: rgba(255, 255, 255, 0.74);
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; */
+}
+
+.tabela_paciente th{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    color: #FFFFFF;
+    width: 400px;
+
+    
+}
+.tabela_paciente td{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 20px;
+    color: #000000;
+    
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 400px;
+}
+
