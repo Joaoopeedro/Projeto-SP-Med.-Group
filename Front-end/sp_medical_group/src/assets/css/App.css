@@ -1,0 +1,872 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap');
+
+*{
+    
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/* LOGIN */
+.flex {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #247DBD;
+    ;
+  }
+  
+  /* Itens da Tela de Login */
+  .img__login {
+    width: 50vw;
+    height: 100vh;
+    background-image: url("../img/imagem_login.png");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+  }
+  
+  .img__overlay {
+    /* rgb(111,71,255) */
+    /* background: linear-gradient(0deg, rgba(36, 125, 189, 0.37), rgba(36, 125, 189, 0.37)), url(.jpg); */
+    overflow: hidden;
+    height: 100vh;
+    z-index: 2;
+  }
+  
+  /* Media query login imagem */
+  @media only screen and (max-width: 768px) {
+    .img__login {
+      display: none;
+    }
+  
+    .container {
+      width: 100%;
+    }
+  
+    .item__login {
+      width: 100vw;
+      height: 100vh;
+    }
+  }
+  
+  /* .img__overlay::after {
+    content: '';
+    display: block;
+    background-color: white;
+    width: 194px;
+    height: 111vh;
+    left: 41%;
+    position: fixed;
+    transform: rotate(+7deg);
+    transform-origin: bottom;
+  } */
+  
+  .img__login::after {
+    content: "";
+    position: fixed;
+    background-color: #247DBD;
+    z-index: 10000;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 233px;
+    height: 108vh;
+    transform: rotate(13deg);
+    transform-origin: 0% 0%;
+  }
+  
+  /* Ícones e Inputs de Login */
+  
+  .item__login {
+    width: 50vw;
+    background-color: #247DBD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+  
+  .row {
+    width: auto;
+  }
+  
+  .icone__login {
+    width: 130px;
+    margin-bottom: 10px;
+  }
+  
+  .item {
+    padding: 5px;
+    margin: 10px;
+    text-align: center;
+  }
+  
+  /* Textos tela de login */
+  .text__login {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    font-size: 17px;
+
+  }
+  
+  .senha__login {
+    font-size: 9px;
+    margin-top: 10px;
+    opacity: 0.5;
+  }
+  
+  .input__login {
+    border: 0;
+    width: 350px;
+    
+    height: 40px;
+    
+    text-align: center;
+    padding: 10px;
+    background: white;
+    color: #808080;
+    text-align: left;
+  }
+  
+  .input__login:hover,
+  .input__login:focus {
+    border: 0;
+    
+    text-align: center;
+    background: white;
+    color: #595959;
+    text-align: left;
+  }
+  
+  /* webkit solution */
+  ::-webkit-input-placeholder {
+    text-align: left;
+  }
+  
+  /* mozilla solution */
+  input:-moz-placeholder {
+    text-align: left;
+  }
+  
+  /* Botões de login */
+  
+  .btn {
+    margin-top: 10px;
+    border: none;
+    color: white;
+    border-radius: 3px;
+    width: 70%;
+    height: 40px;
+    padding: 10px 52px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 10px;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  .btn__login {
+    background-color: black;
+    color: #fff;
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(184, 184, 184, 1);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(184, 184, 184, 1);
+    box-shadow: 2px 2px 5px 0px rgba(184, 184, 184, 1);
+  }
+  
+  .btn__login:hover {
+    background-color: #fff;
+    color: black;
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(184, 184, 184, 1);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(184, 184, 184, 1);
+    box-shadow: 2px 2px 5px 0px rgba(184, 184, 184, 1);
+  }
+
+
+
+
+
+
+
+
+
+
+/* HOME */
+
+.header_Home{
+    
+    height: 101px;
+    
+}
+
+.div_header{
+    
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.img_header{
+    width: 120px;
+    height: 104px;
+}
+.org_header{
+    width: 500px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.org_header a{
+    color: #247DBD;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 34px;
+}
+.login-header{
+    border: 3px solid #1D05AF;
+    height: 56px;
+    width: 117px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.main_home{
+    background-image: url("../img/bem_vindo.jpg");
+}
+
+.banner_home{
+    background-image: url("../img/bem_vindo.jpg");
+    
+    height: 664px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+.banner_home h1{
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 68px;
+}
+.banner_home hr{
+    width: 540px;
+    height: 0px;
+    border: 2px solid #FFFFFF;
+    
+}
+.banner_home p{
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 27px;
+}
+.org_banner{
+    width: 540px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.banner-contato{
+    background-color: #237DBD;
+    /* clip-path: polygon(0 0, 100% 0, 100% 76%, 0 94%); */
+    clip-path: polygon(0 0, 100% 0, 100% 79%, 0 100%);
+    /* width: 1440px; */
+    height: 459px;  
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+.org_contato{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+.org_contato h2{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 54px;
+    color: white;
+}
+.org_contato hr{
+    width: 410px;
+    height: 0px;
+    color: black;
+
+    border: 3px solid #000000;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+.org_contato img{
+    width: 33px;
+    height: 28px;
+}
+.org_cont{
+    width: 300px;
+    height: 41px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+
+}
+.org_cont p{
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    line-height: 41px
+}
+
+.divisao_home{
+    background-image: url("../img/bem_vindo.jpg");
+    height: 126px;
+    
+    
+}
+
+.banner_endereco{
+    height: 459px;
+    background-color: #237DBD;
+    clip-path: polygon(0 20%, 100% 4%, 100% 100%, 0 100%);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.banner_endereco h2{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 54px;
+    color: white;
+}
+.banner_endereco hr{
+    width: 410px;
+    height: 0px;
+    color: black;
+
+    border: 3px solid #000000;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.org_endereco{
+    
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+.org_endereco ul{
+    color: black;
+    width: 12px;
+    height: 12px;
+}
+.org_endereco li{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 27px;
+    color: white;
+    
+}
+footer{
+    
+    height: 162px;
+    background: #FFFFFF;
+    
+    
+}
+.org_footer{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    box-sizing: border-box;
+}
+.logo_footer img{
+    width: 120px;
+    height: 104px;  
+}
+.descricao_footer p{
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 27px;
+    color: #000000;
+}
+.descricao_footer{
+    width: 400px;
+    display: flex;
+    justify-content: flex-end;
+}
+.org_redes{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.org_redes img{
+    width: 81px;
+    height: 81px;
+}
+
+
+/* Adm cadastro */
+
+.org_heade_adm{
+    width: 630px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.org_heade_adm a{
+    color: #247DBD;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 34px;
+}
+
+.main_adm{
+    background-image: url("../img/Rectangle\ 17.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.org_cadastro{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 41px;
+
+    /* identical to box height */
+
+    color: #FFFFFF;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+
+}
+.org_cadastro h2{
+    margin-top: 31px;
+    margin-bottom: 31px;
+}
+
+.org_cadastro form{
+    width: 1200px;
+    height: 744px;
+    left: 222px;
+    top: 265px;
+    
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+
+}
+.org_cadastro input{
+    width: 553px;
+    height: 57px;
+    background-color: #237DBD6B;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 34px;
+    padding-left: 10px;
+    
+}
+
+.bnt_cadastrar{
+    width: 290px;
+    height: 73px;
+    background-color: rgba(40, 94, 189, 0.69);
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 34px;
+
+    /* identical to box height */
+
+    color: #000000;
+
+
+}
+.bnt_cadastrar :hover{
+    transform: translateY(-8px);
+    transition: 0.5s;
+    
+
+
+}
+
+.hr_cadastrar hr{
+    width: 1200px;
+    height: 0px;
+    border: 2px solid #000000;
+    transform: rotate(-0.12deg);
+    margin-top: 76px;
+    margin-bottom: 87px;
+}
+.org_tabela_adm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.org_tabela_adm h2{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 41px;
+    color: #FFFFFF;
+    margin-bottom: 21px;
+}
+.tabela_adm{
+    width: 1200px;
+    margin-bottom: 100px;
+}
+
+.tabela_adm thead{
+    height: 89px;
+    background-color: #237DBD;
+   
+    
+}
+.tabela_adm tbody{
+    
+    background: rgba(255, 255, 255, 0.74);
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; */
+}
+
+.tabela_adm th{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    color: #FFFFFF;
+    width: 400px;
+
+    
+}
+.tabela_adm td{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 20px;
+    color: #000000;
+    
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 400px;
+}
+
+.bnt_editar_adm button{
+    background-color: #237DBD;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+/* CADASTRAR USAURIO */
+
+.main_cadastrar_usuario{
+    background-image: url("../img/Rectangle\ 29.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+.org_cadastro_usuario{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 41px;
+
+    /* identical to box height */
+
+    color: #FFFFFF;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+
+}
+
+.org_cadastro_usuario h2{
+    margin-top: 31px;
+    margin-bottom: 31px;
+}
+
+.org_cadastro_usuario form{
+    width: 1200px;
+    height: 670px;
+    left: 222px;
+    top: 265px;
+    
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 100px;
+}
+
+.org_cadastro_usuario input{
+    width: 553px;
+    height: 57px;
+    background-color: #237DBD6B;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 34px;
+    padding-left: 10px;
+    
+}
+.bnt_cadastrar_Usuario{
+    width: 290px;
+    height: 73px;
+    background-color: rgba(40, 94, 189, 0.69);
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 34px;
+
+    /* identical to box height */
+
+    color: #000000;
+
+
+}
+
+
+
+/* Medico */
+
+.main_medico{
+    background-image: url("../img/Rectangle\ 33.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.org_tabela_medico{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.org_tabela_medico h2{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 41px;
+    color: #FFFFFF;
+    margin-bottom: 31px;
+    margin-top: 31px;
+}
+.tabela_medico{
+    width: 1200px;
+    margin-bottom: 200px;
+}
+
+.tabela_medico thead{
+    height: 89px;
+    background-color: #237DBD;
+   
+    
+}
+.tabela_medico tbody{
+    
+    background: rgba(255, 255, 255, 0.74);
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; */
+}
+
+.tabela_medico th{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    color: #FFFFFF;
+    width: 400px;
+
+    
+}
+.tabela_medico td{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 20px;
+    color: #000000;
+    
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 400px;
+}
+
+.bnt_editar_medico button{
+    background-color: #237DBD;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+
+
+/* PACIENTE */
+
+.main_paciente{
+    background-image: url("../img/Rectangle\ 37.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.org_tabela_paciente{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.org_tabela_paciente h2{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 41px;
+    color: #FFFFFF;
+    margin-bottom: 31px;
+    margin-top: 31px;
+}
+.tabela_paciente{
+    width: 1200px;
+    margin-bottom: 200px;
+}
+
+.tabela_paciente thead{
+    height: 89px;
+    background-color: #237DBD;
+   
+    
+}
+.tabela_paciente tbody{
+    
+    background: rgba(255, 255, 255, 0.74);
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; */
+}
+
+.tabela_paciente th{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    color: #FFFFFF;
+    width: 400px;
+
+    
+}
+.tabela_paciente td{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 20px;
+    color: #000000;
+    
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 400px;
+}
+

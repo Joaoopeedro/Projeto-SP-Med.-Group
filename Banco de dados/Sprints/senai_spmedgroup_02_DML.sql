@@ -34,7 +34,7 @@ VALUES (1,'Ligia','13/10/1983','11 3456-7654','43522543-5','94839859000','Rua Es
 	   (7,'Mariana','05/03/2018',NULL,'54566266-8','13771913039','R Sao Antonio, 232 - Vila Universal, Barueri - SP, 06407-140');
 GO
 INSERT INTO paciente(idUsuario,nomePaciente,dataNascimento,telefone,RG,CPF,endereco)
-VALUES (12,'Daniel','10/11/2001','11 95436-8799','54996266-8','13771913099','Av. Ibirapuera - Indianópolis, 3000, São Paulo - SP, 04029-200');
+VALUES (13,'Daniel','10/11/2001','11 95436-8799','54996266-8','13771913099','Av. Ibirapuera - Indianópolis, 3000, São Paulo - SP, 04029-200');
 GO
 
 --Atualizou os registros que não possuem data de nascimento conforme especificado pelo cliente
