@@ -10,8 +10,8 @@ export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
-            senha: '',
+            email: 'adm@adm.com',
+            senha: 'adm132',
             erroMensagem: '',
             isLoading: false,
         };
@@ -22,7 +22,7 @@ export default class Login extends Component {
 
         this.setState({ erroMensagem: '', isLoading: true });
 
-        axios.post('http://localhost:5000/api/login', {
+        axios.post('http://localhost:5000/api/Login/login', {
             email: this.state.email,
             senha: this.state.senha,
 
@@ -41,11 +41,23 @@ export default class Login extends Component {
 
                 console.log(this.props);
                 if (parseJwt().role === '1') {
-                    this.props.history.push('/tiposeventos');
+                    this.props.history.push('/admlistar');
                     console.log('estou logado: ' + usuarioAutenticado());
-                } else {
-                    this.props.history.push('/meusEventos');
+                } else if(parseJwt().role === '2') {
+
+                    this.props.history.push('/paciente');
+                    console.log('estou logado: ' + usuarioAutenticado());
+                    
+                
+                } else if(parseJwt().role === '3') {
+
+                    this.props.history.push('/medico');
+                    console.log('estou logado: ' + usuarioAutenticado());
+                    
+                }else{
+                    this.props.history.push('/login');
                 }
+            
             }
         })
             .catch(() => {
@@ -60,28 +72,30 @@ export default class Login extends Component {
     atualizaStateCampo = (campo) => {
 
         this.setState({ [campo.target.name]: campo.target.value });
+
+        
     };
 
     render() {
         return (
             <div>
-                <section class="container-login flex">
-                    <div class="img__login"><div class="img__overlay"></div></div>
+                <section className="container-login flex">
+                    <div className="img__login"><div className="img__overlay"></div></div>
 
-                    <div class="item__login">
-                        <div class="row">
-                            <div class="item">
-                                <img src={logo} class="icone__login" alt="logo do SpMedical" />
+                    <div className="item__login">
+                        <div className="row">
+                            <div className="item">
+                                <img src={logo} className="icone__login" alt="logo do SpMedical" />
                             </div>
-                            <div class="item" id="item__title">
-                                <p class="text__login" id="item__description">
+                            <div className="item" id="item__title">
+                                <p className="text__login" id="item__description">
                                     Bem-vindo! Faça login para acessar sua conta.
                                 </p>
                             </div>
-                            <form>
-                                <div class="item">
+                            <form onSubmit={this.efetualogin}>
+                                <div className="item">
                                     <input
-                                        class="input__login"
+                                        className="input__login"
                                         placeholder="E-mail"
                                         type="text"
                                         name="email"
@@ -90,9 +104,9 @@ export default class Login extends Component {
                                         onChange={this.atualizaStateCampo}
                                     />
                                 </div>
-                                <div class="item">
+                                <div className="item">
                                     <input
-                                        class="input__login"
+                                        className="input__login"
                                         placeholder="Senha"
                                         type="password"
                                         name="senha"
@@ -101,7 +115,7 @@ export default class Login extends Component {
                                         onChange={this.atualizaStateCampo}
                                     />
                                 </div>
-                                <div class="item">
+                                <div className="item">
                                     {
                                         this.state.isLoading === true && (
                                             <button

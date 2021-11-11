@@ -147,7 +147,14 @@ namespace sp_Medical_group.Web.Api.Repositories
                         Telefone = u.IdPacienteNavigation.Telefone,
                         IdadePaciente = u.IdPacienteNavigation.IdadePaciente,
                         Rg = u.IdPacienteNavigation.Rg
+                    },
+                    IdSituacaoNavigation =new Situacao()
+                    {
+                        IdSituacao = u.IdSituacaoNavigation.IdSituacao,
+                        Situacao1 = u.IdSituacaoNavigation.Situacao1
+
                     }
+                    
                 })
                 .ToList();
         }

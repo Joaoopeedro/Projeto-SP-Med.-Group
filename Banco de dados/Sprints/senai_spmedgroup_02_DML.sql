@@ -62,7 +62,7 @@ SELECT * FROM clinica
 
 
 --> ADCIONANDO DADOS NA TABELA SITUACAO
-INSERT INTO situacao(descricao)
+INSERT INTO situacao(situacao)
 VALUES ('Realizada'),('Cancelada'),('Agendado');
 GO
 SELECT * FROM situacao

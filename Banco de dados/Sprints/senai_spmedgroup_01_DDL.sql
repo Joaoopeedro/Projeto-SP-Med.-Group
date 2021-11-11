@@ -66,9 +66,10 @@ GO
 
 CREATE TABLE situacao(
 	idSituacao SMALLINT PRIMARY KEY IDENTITY,
-	descricao VARCHAR(100)
+	situacao VARCHAR(100)
 );
 GO
+
 
 --> CRIANDO TABELA CONSULTA
 drop table consulta

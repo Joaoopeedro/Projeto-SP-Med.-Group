@@ -13,7 +13,7 @@ namespace sp_Medical_group.Web.Api.Domains
         }
 
         public short IdSituacao { get; set; }
-        public string Descricao { get; set; }
+        public string Situacao1 { get; set; }
 
         public virtual ICollection<Consultum> Consulta { get; set; }
     }

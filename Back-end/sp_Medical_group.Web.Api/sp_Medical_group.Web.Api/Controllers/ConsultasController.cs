@@ -59,7 +59,7 @@ namespace sp_Medical_group.Web.Api.Controllers
         /// Lista todas as consultas
         /// </summary>
         /// <returns>Uma lista de consultas</returns>
-        [Authorize]
+        [Authorize(Roles ="1")]
         [HttpGet]
         public IActionResult ListarTodos()
         {
