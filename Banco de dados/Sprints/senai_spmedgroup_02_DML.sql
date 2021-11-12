@@ -84,5 +84,6 @@ VALUES (7,3,1,'20/01/2020  15:00:00','Estado de recuperacao'),
 	   (7,3,3,'08/03/2020  15:00:00',NULL),
 	   (4,1,3,'09/03/2020  11:00:45',NULL);
 GO
+TRUNCATE TABLE consulta
 
 SELECT * FROM consulta

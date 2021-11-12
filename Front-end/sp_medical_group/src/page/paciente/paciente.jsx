@@ -14,7 +14,8 @@ export default class Paciente extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            listaCnsultas: [],
+            listaConsultas: [],
+            idConsulta: '',
             nomeMedico: '',
             dataConsulta: '',
             descricao: '',
@@ -23,6 +24,25 @@ export default class Paciente extends Component {
             isLoading: false,
         };
     }
+
+    buscarConsultas = () => {
+        fetch('http://localhost:5000/api/Consultas/consulta', {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
+            },
+        })
+            .then((resposta) => resposta.json())
+
+            .then((dados) => this.setState({ listaConsultas: dados }))
+
+            .catch((erro) => console.log(erro))
+    }
+
+    componentDidMount(){
+        this.buscarConsultas();
+    }
+
+
     render() {
         return (
             <div>
@@ -44,7 +64,7 @@ export default class Paciente extends Component {
                     </div>
                 </header>
                 <main className="main_paciente">
-                    <section clclassNameass="container">
+                    <section className="container">
                         <div className="org_tabela_paciente">
                             <h2>Lista de Consultas</h2>
                             <table className="tabela_paciente">
@@ -58,16 +78,23 @@ export default class Paciente extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {this.state.listaConsultas.map((con)=> {
+                                        return(
+                                            <tr key={con.idConsulta}>
+                                                <td>{con.idMedicoNavigation.nomeMedico}</td>
+                                                <td>{Intl.DateTimeFormat("pt-BR", {
+                                                    year: 'numeric', month: 'numeric', day: 'numeric',
+                                                    hour: 'numeric', minute: 'numeric', hour12: false
+                                                }).format(new Date(con.dataConsulta))}</td>
+                                                <td>{con.descricao}</td>
+                                                <td>{con.idSituacaoNavigation.situacao1}</td>
+                                            </tr>
+                                        )
+                                    
+                                    })
 
-                                    <tr>
-                                        <td>joao</td>
-                                        <td>12/02/2022</td>
-                                        <td>Atendimento normal</td>
-                                        <td>normal</td>
+                                    }
 
-
-
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>

@@ -13,9 +13,15 @@ export default function Adm_listar() {
 
     // estrutura de declaração de um estado usando o Hook useState
     // const [ nomeEstado, funcaoAtualiza ] = useState( valorInicial )
+    const [listaMedicos, setListaMedicos] = useState([])
+    const [listaPacientes, setListaPacientes] = useState([])
     const [listaconsultas, setListaadmistar] = useState([]);
-    const [titulo, setTitulo] = useState('');
-    
+    const [idMedico, setIdMedico] = useState(0)
+    const [idPaciente, setIdPaciente] = useState(0)
+    const [idSituacao, setSituacao] = useState(0)
+    const [dataCadastro, setDataCadastro] = useState(new Date())
+
+   
     const [isLoading, setIsLoading] = useState(false);
 
     function buscarConsultas() {
@@ -39,32 +45,77 @@ export default function Adm_listar() {
     };
     useEffect(buscarConsultas, []);
 
-    function cadastrarConsulta(evento){
-        setIsLoading( true );
+    function medicos() {
+        axios('http://localhost:5000/api/Medicos', {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        } )
+
+        .then(response => {
+            if (response.status === 200) {
+                setListaMedicos(response.data)
+            }
+        })
+        .catch(erro => console.log(erro))
+    }
+    
+    useEffect(medicos, [])
+
+    function pacientes() {
+        axios('http://localhost:5000/api/Pacientes/', {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        } )
+
+        .then(response => {
+            if(response.status === 200) {
+                setListaPacientes(response.data)
+            }
+        })
+        .catch(erro => console.log(erro))
+    }
+
+    useEffect(pacientes, [])
+
+    
+
+
+    function cadastrarConsulta(evento) {
+        setIsLoading(true);
 
         // evita o comportamento padrão do navegador
         evento.preventDefault();
 
         axios.post('http://localhost:5000/api/Consultas', {
-            tituloTipoUsuario : titulo
-        }, {
-            headers : {
-                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        })
-        .then(response => {
-            if (response.status === 201) {
-                console.log('A consulta foi cadastrado com sucesso!');
-                setTitulo( '' );
-                buscarConsultas();
-                setIsLoading( false );
-            }
-        })
-        .catch( erro => console.log(erro), setTitulo( '' ), setInterval(() => {
-            setIsLoading( false )
-        }, 5000) );
-    };
+            idPaciente:idPaciente,
+            idMedico:idMedico,
+            dataConsulta:dataCadastro,
+            idSituacao: 3, // id da situação agendada
+            descricao : ''
 
+        }, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
+            .then(response => {
+                if (response.status === 201) {
+                    console.log('A consulta foi cadastrado com sucesso!');
+                    
+                    buscarConsultas();
+                    setIsLoading(false);
+                }
+            })
+            .catch(erro => console.log(erro))
+             
+    }
+
+    console.log('o id do medico escolhido é: ' + idMedico )
+    console.log('o id do medico escolhido é: ' + dataCadastro )
+    
+   
 
     return (
         <div>
@@ -88,13 +139,39 @@ export default function Adm_listar() {
             <main className="main_adm">
                 <section className="container">
                     <div className="org_cadastro">
+
                         <h2>Cadastrar Consulta</h2>
+
                         <form onSubmit={cadastrarConsulta}>
-                            <input type="text" placeholder="Nome Paciente"  ></input>
-                            <input type="text" placeholder="Nome Medico"  ></input>
-                            <input type="date" placeholder="Data da consulta"  ></input>
-                            <input type="text" placeholder="Descricao"  ></input>
-                            <input type="text" placeholder="Situação"  ></input>
+
+                        <select name="Paciente" onChange={ (campo) => setIdPaciente(campo.target.value) } value={idPaciente}  id="">
+
+                            <option value="0">Escolha um paciente</option>
+
+                                {
+                                    listaPacientes.map((event)=> {
+                                        return(
+                                            <option key={event.idPaciente} value={event.idPaciente}>{event.nomePaciente}</option>
+                                            )
+                                        })
+                                }
+
+                            </select>
+
+                            <select name="Medico" onChange={ (campo) => setIdMedico(campo.target.value)} value={idMedico} id="">
+                                <option value="#">Escolha um medicos</option>
+                                {
+                                    listaMedicos.map((event)=> {
+                                        return(
+                                            <option key={event.idMedico} value={event.idMedico} >{event.nomeMedico} </option>
+                                        )
+                                    })
+                                }
+                            </select>
+
+                            <input type="datetime-local" placeholder="Data da consulta" onChange={ (campo) => setDataCadastro(campo.target.value)}  value={dataCadastro}/>
+
+                            {/* <input type="text" placeholder="Descricao"  ></input>                             */}
 
                             <button type="submit" class="bnt_cadastrar">Cadastrar</button>
                         </form>
@@ -128,9 +205,9 @@ export default function Adm_listar() {
                                                 <td>{con.idPacienteNavigation.nomePaciente}</td>
                                                 <td>{con.idMedicoNavigation.nomeMedico}</td>
                                                 <td>{Intl.DateTimeFormat("pt-BR", {
-                                                        year: 'numeric', month: 'numeric', day: 'numeric',
-                                                        hour: 'numeric', minute: 'numeric', hour12: false
-                                                    }).format(new Date(con.dataConsulta))}</td>
+                                                    year: 'numeric', month: 'numeric', day: 'numeric',
+                                                    hour: 'numeric', minute: 'numeric', hour12: false
+                                                }).format(new Date(con.dataConsulta))}</td>
                                                 <td>{con.descricao}</td>
                                                 <td>{con.idSituacaoNavigation.situacao1
                                                 }</td>

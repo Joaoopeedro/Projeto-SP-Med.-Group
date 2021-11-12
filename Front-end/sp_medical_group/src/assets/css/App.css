@@ -530,6 +530,18 @@ footer{
     padding-left: 10px;
     
 }
+.org_cadastro select{
+    width: 553px;
+    height: 57px;
+    background-color: #237DBD6B;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 34px;
+    padding-left: 10px;
+}
 
 .bnt_cadastrar{
     width: 290px;

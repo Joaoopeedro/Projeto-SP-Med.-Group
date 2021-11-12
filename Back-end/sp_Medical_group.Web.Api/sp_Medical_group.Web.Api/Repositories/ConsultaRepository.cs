@@ -61,7 +61,7 @@ namespace sp_Medical_group.Web.Api.Repositories
             {
                 case 3:
                     Medico medico = ctx.Medicos.FirstOrDefault(m => m.IdUsuario == id);
-                    short idMedico = medico.IdMedico;
+                    
                     return ctx.Consulta
                         .Select(c => new Consultum() {
                             IdConsulta = c.IdConsulta,
@@ -79,21 +79,27 @@ namespace sp_Medical_group.Web.Api.Repositories
                                 Cpf = c.IdPacienteNavigation.Cpf,
                                 Rg = c.IdPacienteNavigation.Rg
 
+                            },
+                            IdSituacaoNavigation = new Situacao()
+                            {
+                                IdSituacao = c.IdSituacaoNavigation.IdSituacao,
+                                Situacao1 = c.IdSituacaoNavigation.Situacao1
                             }
 
+
                         })
-                        .Where(c => c.IdMedico == idMedico).ToList();
+                        .Where(c => c.IdMedico == medico.IdMedico).ToList();
                     
 
                 case 2:
-                    Paciente paciente = ctx.Pacientes.FirstOrDefault(p => p.IdPaciente == id);
-                    short idPaciente = paciente.IdPaciente;
+                    Paciente paciente = ctx.Pacientes.FirstOrDefault(p => p.IdUsuario == id);
                     return ctx.Consulta
                         .Select(c => new Consultum()
                         {
                             IdConsulta = c.IdConsulta,
                             DataConsulta = c.DataConsulta,
                             IdSituacao = c.IdSituacao,
+                            IdPaciente = c.IdPaciente,
                             IdMedico = c.IdMedico,
                             Descricao = c.Descricao,
                             IdMedicoNavigation = new Medico()
@@ -101,13 +107,14 @@ namespace sp_Medical_group.Web.Api.Repositories
                                 NomeMedico = c.IdMedicoNavigation.NomeMedico,
                                 Crm = c.IdMedicoNavigation.Crm,
                                 IdEspecializacao = c.IdMedicoNavigation.IdEspecializacao
-
-
+                            },
+                            IdSituacaoNavigation = new Situacao()
+                            {
+                                IdSituacao = c.IdSituacaoNavigation.IdSituacao,
+                                Situacao1 = c.IdSituacaoNavigation.Situacao1
                             }
-                            
-
                         })
-                        .Where(c => c.IdPaciente == idPaciente).ToList();
+                        .Where(c => c.IdPaciente == paciente.IdPaciente).ToList();
                    
                 default:
                     return null;

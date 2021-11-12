@@ -11,15 +11,52 @@ export default class Medico extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            listaCnsultas: [],
+            listaConsultas: [],
+            idConsulta: '',
             nomePaciente: '',
             dataConsulta: '',
             idade: '',
             descricao: '',
             situacao: '',
             erroMensagem: '',
+            idConsultaAlterado: 0,
             isLoading: false,
         };
+    }
+    buscarConsultas = () => {
+        fetch('http://localhost:5000/api/Consultas/consulta', {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
+            },
+        })
+            .then((resposta) => resposta.json())
+
+            .then((dados) => this.setState({ listaConsultas: dados }))
+
+            .catch((erro) => console.log(erro))
+    }
+
+    componentDidMount() {
+        this.buscarConsultas();
+    }
+
+    mudarDescricao = () => {
+        document.getElementById("descricao").innerHTML = '<form onSubmit={this.mudarDescricao}><input type="text" /></form>'
+
+        fetch("http://localhost:5000/api/Consultas/Descricao" + this.state.idConsulta, {
+            method: 'PATCH',
+
+            // Define o corpo da requisição especificando o tipo ( JSON )
+            body: JSON.stringify({ descricao: this.state.descricao }),
+
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
+            }
+        })
+
+            .then((resposta) => resposta.json())
+            .catch((erro) => console.log(erro))
+            .then(this.buscarConsultas)
     }
 
     render() {
@@ -51,7 +88,7 @@ export default class Medico extends Component {
                                     <tr>
                                         <th>Paciente</th>
                                         <th>Data da consulta</th>
-                                        <th>Idade Paciente</th>
+                                        <th>Data de Nascimento</th>
                                         <th>Descrição</th>
                                         <th>Situação</th>
                                         <th>Editar</th>
@@ -61,16 +98,28 @@ export default class Medico extends Component {
                                 </thead>
                                 <tbody>
 
-                                    <tr>
-                                        <td>joao</td>
-                                        <td>12/02/2022</td>
-                                        <td>30 anos</td>
-                                        <td>Atendimento normal</td>
-                                        <td>normal</td>
-                                        <td class="bnt_editar_medico"><button>Editar</button></td>
+                                    {this.state.listaConsultas.map((con) => {
+                                        return (
+                                            <tr key={con.idConsulta} >
+                                                <td>{con.idPacienteNavigation.nomePaciente}</td>
+                                                <td>{Intl.DateTimeFormat("pt-BR", {
+                                                    year: 'numeric', month: 'numeric', day: 'numeric',
+                                                    hour: 'numeric', minute: 'numeric', hour12: false
+                                                }).format(new Date(con.dataConsulta))}</td>
+                                                <td>{Intl.DateTimeFormat("pt-BR", {
+                                                    year: 'numeric', month: 'numeric', day: 'numeric',
+                                                    hour12: false
+                                                }).format(new Date(con.idPacienteNavigation.dataNascimento))}</td>
+                                                <td id="descricao">{con.descricao}</td>
+                                                <td>{con.idSituacaoNavigation.situacao1}</td>
+                                                <td class="bnt_editar_medico" ><button onClick={this.mudarDescricao} type='submit'>Editar </button></td>
 
+                                            </tr>
+                                        )
 
-                                    </tr>
+                                    })
+
+                                    }
                                 </tbody>
                             </table>
                         </div>
