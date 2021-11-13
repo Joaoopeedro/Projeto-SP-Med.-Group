@@ -16,7 +16,7 @@ namespace sp_Medical_group.Web.Api.ViewModels
 
         [Required(ErrorMessage = "Informe a senha o usuario")]
 
-        public string senha { get; set; }
+        public string Senha { get; set; }
 
 
     }

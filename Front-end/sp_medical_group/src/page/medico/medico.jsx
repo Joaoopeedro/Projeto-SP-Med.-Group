@@ -32,6 +32,7 @@ export default class Medico extends Component {
             .then((resposta) => resposta.json())
 
             .then((dados) => this.setState({ listaConsultas: dados }))
+            
 
             .catch((erro) => console.log(erro))
     }

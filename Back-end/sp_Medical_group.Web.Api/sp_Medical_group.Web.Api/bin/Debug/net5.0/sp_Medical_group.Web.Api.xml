@@ -75,7 +75,7 @@
             <param name="id">ID da consulta buscada</param>
             <returns>A consulta buscada</returns>
         </member>
-        <member name="M:sp_Medical_group.Web.Api.Controllers.LoginController.Login(sp_Medical_group.Web.Api.Domains.Usuario)">
+        <member name="M:sp_Medical_group.Web.Api.Controllers.LoginController.Login(sp_Medical_group.Web.Api.ViewModels.LoginViewModel)">
             <summary>
             Logar um usuario
             </summary>

@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using sp_Medical_group.Web.Api.Domains;
 using sp_Medical_group.Web.Api.Interfaces;
 using sp_Medical_group.Web.Api.Repositories;
+using sp_Medical_group.Web.Api.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -31,7 +32,7 @@ namespace sp_Medical_group.Web.Api.Controllers
         /// <param name="login">Login do Usuario</param>
         /// <returns>Um usuario logado</returns>
         [HttpPost("login")]
-        public IActionResult Login(Usuario login)
+        public IActionResult Login(LoginViewModel login)
         {
             Usuario usuarioBuscado = _usuarioRepository.Login(login.Email, login.Senha);
 
