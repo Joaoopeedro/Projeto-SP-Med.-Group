@@ -449,6 +449,27 @@ footer{
     width: 81px;
     height: 81px;
 }
+@media only screen and (max-width: 768px){
+    .container{
+        width: 95%;
+    }
+    .img_header {
+        width: 106px;
+        height: 97px;
+    }
+    .descricao_footer{
+        justify-content: center;
+    }
+
+    .org_redes{
+        width: 210px;
+    }
+    .org_redes img{
+        width: 60px;
+        height: 60px;
+
+    }
+}
 
 
 /* Adm cadastro */
@@ -643,6 +664,59 @@ footer{
 
 }
 
+@media only screen and (max-width: 768px){
+    .container{
+        width: 95%;
+    }
+    .img_header {
+        width: 106px;
+        height: 97px;
+    }
+    .org_heade_adm{
+        width: 500px;
+    }
+    .org_cadastro h2{
+        font-size: 1.3em;
+    }
+    .org_heade_adm a{
+        font-size: 20px;
+    }
+
+    .org_cadastro form {
+        width: 95%;
+    }
+    .org_cadastro select{
+        width: 480px;
+    }
+    .org_cadastro input{
+        width: 480px;
+    }
+    .bnt_cadastrar {
+        width: 244px;
+        height: 60px;
+    }
+    .hr_cadastrar hr{
+        width: 680px;
+    }
+    .tabela_adm{
+        width: 95%;
+    }
+    .descricao_footer{
+        justify-content: center;
+    }
+
+    .org_redes{
+        width: 210px;
+    }
+    .org_redes img{
+        width: 60px;
+        height: 60px;
+
+    }
+
+
+}
+
 /* CADASTRAR USAURIO */
 
 .main_cadastrar_usuario{
@@ -721,6 +795,21 @@ footer{
     color: #000000;
 
 
+}
+@media only screen and (max-width: 768px){
+    .org_cadastro_usuario form{
+        width: 95%;
+    }
+    .org_cadastro_usuario h2{
+        font-size: 1.3em;
+    }
+    .org_cadastro_usuario input{
+        width: 480px;
+    }
+    .bnt_cadastrar_Usuario {
+        width: 244px;
+        height: 60px;
+    }
 }
 
 
@@ -805,6 +894,13 @@ footer{
     font-family: 'Open Sans', sans-serif;
 
 }
+@media only screen and (max-width: 768px){
+    .tabela_medico {
+        width: 95%;
+    }
+}
+
+
 
 
 
@@ -880,5 +976,11 @@ footer{
     padding-top: 5px;
     padding-bottom: 5px;
     width: 400px;
+}
+
+@media only screen and (max-width: 768px){
+    .tabela_paciente {
+        width: 95%;
+    }
 }
 
