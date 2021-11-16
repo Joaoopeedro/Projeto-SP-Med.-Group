@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using sp_Medical_group.Web.Api.Context;
 using sp_Medical_group.Web.Api.Domains;
 using sp_Medical_group.Web.Api.Interfaces;
 using sp_Medical_group.Web.Api.Repositories;
@@ -19,10 +20,12 @@ namespace sp_Medical_group.Web.Api.Controllers
     public class ConsultasController : ControllerBase
     {
         private IConsultaRepository _consultaRepository { get; set; }
+        private IMedicoRepository _medicoRepository { get; set; }
 
         public ConsultasController()
         {
             _consultaRepository = new ConsultaRepository();
+            _medicoRepository = new MedicoRepository();
         }
 
         /// <summary>
@@ -113,21 +116,27 @@ namespace sp_Medical_group.Web.Api.Controllers
         /// <param name="novaDescricao">Nova descricao da consulta</param>
         /// <returns>Uma nova descricao de uma determinaa consulta</returns>
         [Authorize(Roles = "3")]
-        [HttpPatch("Descricao/{id}")]
-        public IActionResult MudarDescricao(short id, Consultum novaDescricao)
+        [HttpPatch("Descricao/{idConsulta}")]
+        public IActionResult MudarDescricao(short idConsulta, Consultum novaDescricao)
         {
             try
             {
-                Consultum consultaBuscada = _consultaRepository.BuscarConsulta(id);
-                short idMedico = Convert.ToInt16(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
-                if (consultaBuscada.IdMedico != idMedico)
+                Consultum consultaBuscada = _consultaRepository.BuscarConsulta(idConsulta);
+
+                short idUsuario = Convert.ToInt16(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+
+                SpMedicalContext ctx = new SpMedicalContext();
+                Medico medicoBuscado = ctx.Medicos.FirstOrDefault(m => m.IdUsuario == idUsuario);
+
+                if (medicoBuscado.IdMedico != consultaBuscada.IdMedico)
                 {
                     return BadRequest(new
                     {
                         mensagem = "So o medico dessa consulta pode alterar a desricao"
+                        //mensagem = "Somente médicos logados podem alterar a descrição da consulta"
                     });
                 }
-                if (id <= 0)
+                if (idConsulta <= 0)
                 {
 
                     return BadRequest(new
@@ -144,7 +153,9 @@ namespace sp_Medical_group.Web.Api.Controllers
                         Mensagem = "Por favor Informar a descricao"
                     });
                 }
-                _consultaRepository.MudarDescricao(id, novaDescricao.Descricao);
+
+                _consultaRepository.MudarDescricao(idConsulta, novaDescricao.Descricao);
+
                 return Ok();
             }
             catch (Exception erro)

@@ -1,6 +1,6 @@
 import '../../assets/css/App.css'
 
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import logo from '../../assets/img/Logo_2-removebg-preview.png'
 import wpp from '../../assets/img/wpp-removebg-preview.png'

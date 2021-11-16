@@ -7,9 +7,6 @@ import youtube from '../../assets/img/youtube.png'
 import face from '../../assets/img/instagram.png'
 import insta from '../../assets/img/facebook.png'
 
-
-import { render } from "@testing-library/react";
-
 export default class Paciente extends Component {
     constructor(props) {
         super(props);
@@ -57,7 +54,7 @@ export default class Paciente extends Component {
                             <a href="/">Home</a>
                             <a href="/paciente">Consultas</a>
                             <a href="/">Agentdar</a>
-                            <a href="">Paciente</a>
+                            <a href="/paciente">Paciente</a>
 
 
                         </div>

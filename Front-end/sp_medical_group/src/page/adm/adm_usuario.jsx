@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 // import axios from 'axios';
 // import { render } from '@testing-library/react';
 
@@ -13,9 +13,9 @@ export default function Adm_usuario() {
 
     // estrutura de declaração de um estado usando o Hook useState
     // const [ nomeEstado, funcaoAtualiza ] = useState( valorInicial )
-    const [listaTiposUsuarios, setListaadmusuario] = useState([]);
-    const [titulo, setTitulo] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
+    // const [listaTiposUsuarios, setListaadmusuario] = useState([]);
+    // const [titulo, setTitulo] = useState('');
+    // const [isLoading, setIsLoading] = useState(false);
 
 
     return (
@@ -31,7 +31,7 @@ export default function Adm_usuario() {
                         <a href="/">Home</a>
                         <a href="/admlistar">Consultas</a>
                         <a href="/admusuario">Cadastrar Usuario</a>
-                        <a href="">Adminitrador</a>
+                        <a href="/adm">Adminitrador</a>
 
 
                     </div>

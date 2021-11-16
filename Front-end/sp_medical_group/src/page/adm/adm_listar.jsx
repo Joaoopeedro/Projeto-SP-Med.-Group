@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { render } from '@testing-library/react';
-
-
 
 import logo from '../../assets/img/Logo_2-removebg-preview.png'
 import youtube from '../../assets/img/youtube.png'
@@ -18,11 +15,11 @@ export default function Adm_listar() {
     const [listaconsultas, setListaadmistar] = useState([]);
     const [idMedico, setIdMedico] = useState(0)
     const [idPaciente, setIdPaciente] = useState(0)
-    const [idSituacao, setSituacao] = useState(0)
+    // const [idSituacao, setSituacao] = useState(0)
     const [dataCadastro, setDataCadastro] = useState(new Date())
 
    
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
 
     function buscarConsultas() {
         console.log('Agora vamos fazer a chamada para a API.')
@@ -38,11 +35,14 @@ export default function Adm_listar() {
                 if (resposta.status === 200) {
                     // estrutura set...
                     // setListaTiposUsuarios( novoValor )
-                    setListaadmistar(resposta.data)
+                    setListaadmistar(resposta.data.listaconsultas)
+                    
+                    
                 }
             })
             .catch(erro => console.log(erro));
     };
+
     useEffect(buscarConsultas, []);
 
     function medicos() {
@@ -54,7 +54,7 @@ export default function Adm_listar() {
 
         .then(response => {
             if (response.status === 200) {
-                setListaMedicos(response.data)
+                setListaMedicos(response.data.listaMedicos)
             }
         })
         .catch(erro => console.log(erro))
@@ -71,7 +71,7 @@ export default function Adm_listar() {
 
         .then(response => {
             if(response.status === 200) {
-                setListaPacientes(response.data)
+                setListaPacientes(response.data.listaPacientes)
             }
         })
         .catch(erro => console.log(erro))
@@ -83,7 +83,7 @@ export default function Adm_listar() {
 
 
     function cadastrarConsulta(evento) {
-        setIsLoading(true);
+        // setIsLoading(true);
 
         // evita o comportamento padrão do navegador
         evento.preventDefault();
@@ -105,7 +105,7 @@ export default function Adm_listar() {
                     console.log('A consulta foi cadastrado com sucesso!');
                     
                     buscarConsultas();
-                    setIsLoading(false);
+                    // setIsLoading(false);
                 }
             })
             .catch(erro => console.log(erro))
@@ -130,7 +130,7 @@ export default function Adm_listar() {
                         <a href="/">Home</a>
                         <a href="/admlistar">Consultas</a>
                         <a href="/admusuario">Cadastrar Usuario</a>
-                        <a href="">Adminitrador</a>
+                        <a href="/adm">Adminitrador</a>
 
 
                     </div>

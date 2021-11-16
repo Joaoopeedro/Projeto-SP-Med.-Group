@@ -21,6 +21,8 @@ export default class Medico extends Component {
             erroMensagem: '',
             idConsultaAlterado: 0,
             isLoading: false,
+            editando: false,
+            keyAtual: 0
         };
     }
     buscarConsultas = () => {
@@ -32,7 +34,6 @@ export default class Medico extends Component {
             .then((resposta) => resposta.json())
 
             .then((dados) => this.setState({ listaConsultas: dados }))
-            
 
             .catch((erro) => console.log(erro))
     }
@@ -41,30 +42,88 @@ export default class Medico extends Component {
         this.buscarConsultas();
     }
 
-    mudarDescricao = () => {
-        document.getElementById("descricao").innerHTML = '<form onSubmit={this.mudarDescricao}><input type="text" /></form>'
+    mudarDescricao = (event) => {
+        event.preventDefault();
+        console.log(this.state.idConsultaAlterado)
+        console.log(this.state.descricao)
+        if (this.state.idConsultaAlterado !== 0) {
 
-        fetch("http://localhost:5000/api/Consultas/Descricao" + this.state.idConsulta, {
+        
+        fetch("http://localhost:5000/api/Consultas/Descricao/" + this.state.idConsultaAlterado, {
             method: 'PATCH',
 
             // Define o corpo da requisição especificando o tipo ( JSON )
             body: JSON.stringify({ descricao: this.state.descricao }),
 
             headers: {
+                'Content-Type' : 'Application/Json',
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
             }
+            
         })
-
-            .then((resposta) => resposta.json())
+        
+        
+        .then((resposta) => {
+            // Caso a requisição retorne um status code 204,
+            if (resposta.status === 204) {
+                console.log(
+                    // Exibe no console do navegador a mensagem abaixo
+                    'O Tipo de Evento ' +
+                    this.state.idConsultaAlterado +
+                    ' foi atualizado!',
+                    
+                    
+                    );
+                }
+            })
+            
+            // caso ocorra algum erro, mostra no console do navegador.
             .catch((erro) => console.log(erro))
             .then(this.buscarConsultas)
+        }
     }
+
+    buscaConsulta = (consultaRecebida) => {
+        console.log(consultaRecebida)
+        this.setState(
+          {
+            // Atualiza o state idTipoEventoAlterado com o valor do ID do Tipo de Evento recebido
+            idConsultaAlterado: consultaRecebida.idConsulta,
+            
+            // e o state titulo com o valor do título do Tipo de Evento recebido
+            descricao: consultaRecebida.descricao,
+          },
+          () => {
+            console.log(
+              'A consulta ' + consultaRecebida.idConsulta + ' foi selecionada,',
+              'agora o valor do state idConsultaAlterado é: ' +
+                this.state.idConsultaAlterado,
+              'e o valor do state descricao é: ' + this.state.descricao,
+            );
+          },
+          
+          
+        );
+      };
+
+      atualizaStateCampo = async (event) => {
+        
+    
+        await this.setState({
+          //dizendo que o target (alvo) do evento ,  vamos pegar o value(valor)
+          descricao: event.target.value,
+        });
+        console.log(this.state.descricao);
+      };
+
+
+
 
     render() {
         return (
             <div>
                 <header className=" container header_Home" id="header">
-                    <div class=" div_header container">
+                    <div className=" div_header container">
                         <div>
                             <a href="#header">
                                 <img className="img_header" src={logo} alt="" />
@@ -74,7 +133,7 @@ export default class Medico extends Component {
                             <a href="/">Home</a>
                             <a href="/medico">Consultas</a>
                             <a href="/">Relatorio</a>
-                            <a href="">Médico</a>
+                            <a href="/medico">Médico</a>
 
 
                         </div>
@@ -111,9 +170,11 @@ export default class Medico extends Component {
                                                     year: 'numeric', month: 'numeric', day: 'numeric',
                                                     hour12: false
                                                 }).format(new Date(con.idPacienteNavigation.dataNascimento))}</td>
-                                                <td id="descricao">{con.descricao}</td>
+                                                <td id="descricao">
+                                                    {con.descricao}
+                                                </td>
                                                 <td>{con.idSituacaoNavigation.situacao1}</td>
-                                                <td class="bnt_editar_medico" ><button onClick={this.mudarDescricao} type='submit'>Editar </button></td>
+                                                <td className="bnt_editar_medico" ><button name={con.idConsulta} onClick={() => this.buscaConsulta(con)} type='submit'>Editar </button></td>
 
                                             </tr>
                                         )
@@ -123,6 +184,20 @@ export default class Medico extends Component {
                                     }
                                 </tbody>
                             </table>
+
+                            {
+                                this.state.idConsultaAlterado !== 0 &&
+                                (
+                                    <div>
+                                        <h2>Altere a descrição da consulta</h2>
+                                        <form onSubmit={this.mudarDescricao}>
+                                            <label htmlFor="inputJoao">Descrição da consulta</label>
+                                            <input id="inputJoao" type="text" name="descricao" value={this.state.descricao} onChange={this.atualizaStateCampo}/>
+                                            <button type="submit"   >Salvar</button>
+                                        </form>
+                                    </div>
+                                )
+                            }
                         </div>
                     </section>
 
