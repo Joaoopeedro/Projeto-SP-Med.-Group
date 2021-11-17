@@ -112,7 +112,7 @@ namespace sp_Medical_group.Web.Api.Controllers
         /// <summary>
         /// Muda a descricao de uma determinada consulta
         /// </summary>
-        /// <param name="id">ID da consulta atualizada</param>
+        /// <param name="idConsulta">ID da consulta atualizada</param>
         /// <param name="novaDescricao">Nova descricao da consulta</param>
         /// <returns>Uma nova descricao de uma determinaa consulta</returns>
         [Authorize(Roles = "3")]

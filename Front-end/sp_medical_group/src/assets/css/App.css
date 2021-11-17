@@ -845,7 +845,12 @@ footer{
 }
 .tabela_medico{
     width: 1200px;
-    margin-bottom: 200px;
+    margin-bottom: 50px;
+}
+.tabela_medico img{
+    height: 20px;
+    width: 20px;
+    margin-left: 10px;
 }
 
 .tabela_medico thead{
@@ -891,6 +896,54 @@ footer{
 .bnt_editar_medico button{
     background-color: #237DBD;
     color: white;
+    font-family: 'Open Sans', sans-serif;
+
+}
+.alterarDescricao{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+.alterarDescricao form{
+    width: 1200px;
+    height: 370px;
+    left: 222px;
+    top: 265px;
+    
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 100px;
+}
+.alterarDescricao input{
+    width: 553px;
+    height: 57px;
+    background-color: #237DBD6B;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 34px;
+    padding-left: 10px;
+    
+}
+.alterarDescricao button{
+    width: 190px;
+    height: 50px;
+    background-color: #237DBD;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 25px;
+
+
+}
+.alterarDescricao label{
+    font-size: 30px;
     font-family: 'Open Sans', sans-serif;
 
 }

@@ -1,16 +1,27 @@
 import '../../assets/css/App.css'
 
-// import { Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
+import { usuarioAutenticado } from '../../services/auth'
 
 import logo from '../../assets/img/Logo_2-removebg-preview.png'
 import wpp from '../../assets/img/wpp-removebg-preview.png'
 import telefone from '../../assets/img/Telefone-removebg-preview.png'
 import email from '../../assets/img/email.png'
-import youtube from '../../assets/img/youtube.png'
-import face from '../../assets/img/instagram.png'
-import insta from '../../assets/img/facebook.png'
+// import youtube from '../../assets/img/youtube.png'
+// import face from '../../assets/img/instagram.png'
+// import insta from '../../assets/img/facebook.png'
+import Footer from "../../components/footer/footer";
 
 function App() {
+
+    let history = useHistory()
+
+    function logOut() {
+        localStorage.removeItem('usuario-login')
+
+        history.push('/')
+    }
+
     return (
         <div>
             <header className=" container header_Home" id="header">
@@ -26,7 +37,29 @@ function App() {
                         <a href="/">Home</a>
                         <a href="#contato">Contato</a>
                         <a href="/login">Consultas</a>
-                        <a className="login-header" href="/login">Login</a>
+                        <div className="login-header" href="/login">
+                            {
+                                usuarioAutenticado() ? (
+                                    <div>
+                                        <div onClick={logOut}>
+                                            <a  href="/">
+                                                <p>Logout</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div>
+                                        <a href="/login">
+                                            <div className="alinhar_login">
+                                                <p>Login</p>
+                                            </div>
+                                        </a>
+
+                                    </div>
+                                )
+                            }
+
+                        </div>
 
                     </div>
                 </div>
@@ -70,25 +103,7 @@ function App() {
                 </section>
 
             </main>
-            <footer className="container">
-                <div className=" org_footer">
-                    <div className="logo_footer">
-                        <a href="#header">
-
-                            <img src={logo} alt="" id="#header" />
-                        </a>
-
-                    </div>
-                    <div className="descricao_footer">
-                        <p>Todos os direitos reservados®</p>
-                    </div>
-                    <div className="org_redes">
-                        <img src={youtube} alt="" />
-                        <img src={insta} alt="" />
-                        <img src={face} alt="" />
-                    </div>
-                </div>
-            </footer>
+            <Footer />
         </div>
 
     );

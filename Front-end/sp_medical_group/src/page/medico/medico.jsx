@@ -3,9 +3,11 @@ import { Component } from "react";
 
 
 import logo from '../../assets/img/Logo_2-removebg-preview.png'
-import youtube from '../../assets/img/youtube.png'
-import face from '../../assets/img/instagram.png'
-import insta from '../../assets/img/facebook.png'
+// import youtube from '../../assets/img/youtube.png'
+// import face from '../../assets/img/instagram.png'
+// import insta from '../../assets/img/facebook.png'
+import Footer from "../../components/footer/footer";
+import editar from '../../assets/img/icone descricao.png'
 
 export default class Medico extends Component {
     constructor(props) {
@@ -80,6 +82,7 @@ export default class Medico extends Component {
             // caso ocorra algum erro, mostra no console do navegador.
             .catch((erro) => console.log(erro))
             .then(this.buscarConsultas)
+            .then(this.limparCampos)
         }
     }
 
@@ -114,6 +117,13 @@ export default class Medico extends Component {
           descricao: event.target.value,
         });
         console.log(this.state.descricao);
+      };
+      limparCampos = () => {
+        this.setState({
+          descricao: '',
+          idConsultaAlterado: 0,
+        });
+        console.log('Os states foram resetados!');
       };
 
 
@@ -151,7 +161,7 @@ export default class Medico extends Component {
                                         <th>Data de Nascimento</th>
                                         <th>Descrição</th>
                                         <th>Situação</th>
-                                        <th>Editar</th>
+
 
 
                                     </tr>
@@ -172,9 +182,12 @@ export default class Medico extends Component {
                                                 }).format(new Date(con.idPacienteNavigation.dataNascimento))}</td>
                                                 <td id="descricao">
                                                     {con.descricao}
+                                                    
+                                                    <img src={editar} alt="" name={con.idConsulta} onClick={() => this.buscaConsulta(con)}/>
+                                                    
                                                 </td>
                                                 <td>{con.idSituacaoNavigation.situacao1}</td>
-                                                <td className="bnt_editar_medico" ><button name={con.idConsulta} onClick={() => this.buscaConsulta(con)} type='submit'>Editar </button></td>
+                                                
 
                                             </tr>
                                         )
@@ -188,12 +201,13 @@ export default class Medico extends Component {
                             {
                                 this.state.idConsultaAlterado !== 0 &&
                                 (
-                                    <div>
+                                    <div className="alterarDescricao">
                                         <h2>Altere a descrição da consulta</h2>
                                         <form onSubmit={this.mudarDescricao}>
                                             <label htmlFor="inputJoao">Descrição da consulta</label>
                                             <input id="inputJoao" type="text" name="descricao" value={this.state.descricao} onChange={this.atualizaStateCampo}/>
                                             <button type="submit"   >Salvar</button>
+                                            <button type="button" onClick={this.limparCampos}   >Cancelar</button>
                                         </form>
                                     </div>
                                 )
@@ -202,23 +216,7 @@ export default class Medico extends Component {
                     </section>
 
                 </main>
-                <footer className="container">
-                    <div className=" org_footer">
-                        <div className="logo_footer">
-                            <a href="#header">
-                                <img src={logo} alt="" />
-                            </a>
-                        </div>
-                        <div className="descricao_footer">
-                            <p>Todos os direitos reservados®</p>
-                        </div>
-                        <div className="org_redes">
-                            <img src={youtube} alt="" />
-                            <img src={insta} alt="" />
-                            <img src={face} alt="" />
-                        </div>
-                    </div>
-                </footer>
+                <Footer/>
 
             </div>
         )

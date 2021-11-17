@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import logo from '../../assets/img/Logo_2-removebg-preview.png'
-import youtube from '../../assets/img/youtube.png'
-import face from '../../assets/img/instagram.png'
-import insta from '../../assets/img/facebook.png'
+// import youtube from '../../assets/img/youtube.png'
+// import face from '../../assets/img/instagram.png'
+// import insta from '../../assets/img/facebook.png'
+import Footer from "../../components/footer/footer";
 
 export default function Adm_listar() {
 
@@ -191,7 +192,7 @@ export default function Adm_listar() {
                                     <th>Data da consulta</th>
                                     <th>Descrição</th>
                                     <th>Situação</th>
-                                    <th>Editar</th>
+                                    {/* <th>Editar</th> */}
 
 
                                 </tr>
@@ -211,7 +212,7 @@ export default function Adm_listar() {
                                                 <td>{con.descricao}</td>
                                                 <td>{con.idSituacaoNavigation.situacao1
                                                 }</td>
-                                                <td className="bnt_editar_adm"><button>Editar</button></td>
+                                                {/* <td className="bnt_editar_adm"><button>Editar</button></td> */}
 
 
                                             </tr>
@@ -229,23 +230,8 @@ export default function Adm_listar() {
                     </div>
                 </section>
             </main>
-            <footer className="container">
-                <div className=" org_footer">
-                    <div className="logo_footer">
-                        <a href="#header">
-                            <img src={logo} alt="" />
-                        </a>
-                    </div>
-                    <div className="descricao_footer">
-                        <p>Todos os direitos reservados®</p>
-                    </div>
-                    <div className="org_redes">
-                        <img src={youtube} alt="" />
-                        <img src={insta} alt="" />
-                        <img src={face} alt="" />
-                    </div>
-                </div>
-            </footer>
+
+            <Footer/>
 
         </div>
     )
