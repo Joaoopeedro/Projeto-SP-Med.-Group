@@ -207,7 +207,7 @@ export default class Medico extends Component {
                                             <label htmlFor="inputJoao">Descrição da consulta</label>
                                             <input id="inputJoao" type="text" name="descricao" value={this.state.descricao} onChange={this.atualizaStateCampo}/>
                                             <button type="submit"   >Salvar</button>
-                                            <button type="button" onClick={this.limparCampos}   >Cancelar</button>
+                                            <button type="button" onClick={this.limparCampos}>Cancelar</button>
                                         </form>
                                     </div>
                                 )
