@@ -36,7 +36,9 @@ export default function Adm_listar() {
                 if (resposta.status === 200) {
                     // estrutura set...
                     // setListaTiposUsuarios( novoValor )
-                    setListaadmistar(resposta.data.listaconsultas)
+                    console.log('aki')
+                    console.log(resposta)
+                    setListaadmistar(resposta.data)
                     
                     
                 }
@@ -55,7 +57,7 @@ export default function Adm_listar() {
 
         .then(response => {
             if (response.status === 200) {
-                setListaMedicos(response.data.listaMedicos)
+                setListaMedicos(response.data)
             }
         })
         .catch(erro => console.log(erro))
@@ -72,7 +74,7 @@ export default function Adm_listar() {
 
         .then(response => {
             if(response.status === 200) {
-                setListaPacientes(response.data.listaPacientes)
+                setListaPacientes(response.data)
             }
         })
         .catch(erro => console.log(erro))

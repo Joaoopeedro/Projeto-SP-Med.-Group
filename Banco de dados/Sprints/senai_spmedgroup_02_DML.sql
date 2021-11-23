@@ -4,7 +4,7 @@ GO
 --> ADCIONANDO DADOS NA TABELA TIPOUSUARIO
 
 INSERT INTO tipoUsuario(tituloTipoUsuario)
-VALUES ('Adminisatrador'),('Paciente'),('médico');
+VALUES ('Adminisatrador'),('Paciente'),('mï¿½dico');
 GO
 SELECT * FROM tipoUsuario
 
@@ -25,19 +25,19 @@ SELECT * FROM usuario
 
 --> ADCIONANDO DADOS NA TABELA PACIENTE
 INSERT INTO paciente(idUsuario,nomePaciente,dataNascimento,telefone,RG,CPF,endereco)
-VALUES (1,'Ligia','13/10/1983','11 3456-7654','43522543-5','94839859000','Rua Estado de Israel 240, São Paulo, Estado de São Paulo, 04022-000'),
-       (2,'Alexandre','23/07/2001','11 98765-6543','32654345-7','73556944057','Av. Paulista, 1578 - Bela Vista, São Paulo - SP, 01310-200'),
-	   (3,'Fernando','10/10/1978','11 97208-4453','54636525-3','16839338002','Av. Ibirapuera - Indianópolis, 2927, São Paulo - SP, 04029-200'),
-	   (4,'Henrique','13/10/1985','11 3456-6543','54366362-5','14332654765','R. Vitória, 120 - Vila Sao Jorge, Barueri - SP, 06402-030'),
-	   (5,'João','21/08/1972','11 7656-6377','53254444-1','91305348010','R. Ver. Geraldo de Camargo, 66 - Santa Luzia, Ribeirão Pires - SP, 09405-380'),
-	   (6,'Bruno','21/03/1972','11 95436-8769','54566266-7','79799299004','Alameda dos Arapanés, 945 - Indianópolis, São Paulo - SP, 04524-001'),
+VALUES (1,'Ligia','13/10/1983','11 3456-7654','43522543-5','94839859000','Rua Estado de Israel 240,ï¿½Sï¿½o Paulo, Estado de Sï¿½o Paulo, 04022-000'),
+       (2,'Alexandre','23/07/2001','11 98765-6543','32654345-7','73556944057','Av. Paulista, 1578 - Bela Vista, Sï¿½o Paulo - SP, 01310-200'),
+	   (3,'Fernando','10/10/1978','11 97208-4453','54636525-3','16839338002','Av. Ibirapuera - Indianï¿½polis, 2927, Sï¿½o Paulo - SP, 04029-200'),
+	   (4,'Henrique','13/10/1985','11 3456-6543','54366362-5','14332654765','R. Vitï¿½ria, 120 - Vila Sao Jorge, Barueri - SP, 06402-030'),
+	   (5,'Joï¿½o','21/08/1972','11 7656-6377','53254444-1','91305348010','R. Ver. Geraldo de Camargo, 66 - Santa Luzia, Ribeirï¿½o Pires - SP, 09405-380'),
+	   (6,'Bruno','21/03/1972','11 95436-8769','54566266-7','79799299004','Alameda dos Arapanï¿½s, 945 - Indianï¿½polis, Sï¿½o Paulo - SP, 04524-001'),
 	   (7,'Mariana','05/03/2018',NULL,'54566266-8','13771913039','R Sao Antonio, 232 - Vila Universal, Barueri - SP, 06407-140');
 GO
 INSERT INTO paciente(idUsuario,nomePaciente,dataNascimento,telefone,RG,CPF,endereco)
-VALUES (12,'Daniel','10/11/2001','11 95436-8799','54996266-8','13771913099','Av. Ibirapuera - Indianópolis, 3000, São Paulo - SP, 04029-200');
+VALUES (12,'Daniel','10/11/2001','11 95436-8799','54996266-8','13771913099','Av. Ibirapuera - Indianï¿½polis, 3000, Sï¿½o Paulo - SP, 04029-200');
 GO
 
---Atualizou os registros que não possuem data de nascimento conforme especificado pelo cliente
+--Atualizou os registros que nï¿½o possuem data de nascimento conforme especificado pelo cliente
 UPDATE paciente SET dataNascimento = '20/03/2000'
 WHERE idPaciente = 9
 
@@ -48,15 +48,15 @@ SELECT * FROM paciente
 
 --> ADCIONANDO DADOS NA TABELA ESPECIALIZACAO
 INSERT INTO especializacao(tipoEspecializacao)
-VALUES ('Acupuntura'),('Anestesiologia'),('Angiologia'),('Cardiologia'),('Cirurgia Cardiovascular'),('Cirurgia da Mão'),('Cirurgia do Aparelho Digestivo'),
-       ('Cirurgia Geral'),('Cirurgia Pediátrica'),('Cirurgia Plástica'),('Cirurgia Torácica'),('Cirurgia Vascular'),('Dermatologia'),('Radioterapia'),('Urologia'),
+VALUES ('Acupuntura'),('Anestesiologia'),('Angiologia'),('Cardiologia'),('Cirurgia Cardiovascular'),('Cirurgia da Mï¿½o'),('Cirurgia do Aparelho Digestivo'),
+       ('Cirurgia Geral'),('Cirurgia Pediï¿½trica'),('Cirurgia Plï¿½stica'),('Cirurgia Torï¿½cica'),('Cirurgia Vascular'),('Dermatologia'),('Radioterapia'),('Urologia'),
 	   ('Pediatria'),('Psiquiatria');
 GO
 SELECT * FROM especializacao
 
 --> ADCIONANDO DADOS NA TABELA CLINICA
 INSERT INTO clinica(nomeFantasia,CNPJ,razaoSocial,endereco)
-VALUES ('Clinica Possarle', '86.400.902/0001-30','SP Medical Group','Av. Barão Limeira, 532, São Paulo, SP');
+VALUES ('Clinica Possarle', '86.400.902/0001-30','SP Medical Group','Av. Barï¿½o Limeira, 532, Sï¿½o Paulo, SP');
 GO
 SELECT * FROM clinica
 
