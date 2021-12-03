@@ -10,15 +10,17 @@ import {
 } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import jwt_decode from "jwt-decode";
 
 import api from '../services/api';
+import { parse } from '@babel/core';
 
 export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
-            senha: '',
+            email: 'roberto.possarle@spmedicalgroup.com.br',
+            senha: 'roberto123',
         };
     }
 
@@ -35,10 +37,19 @@ export default class Login extends Component {
     
         
         if (resposta.status == 200) {
-          this.props.navigation.navigate('Medico');
+           var decoded = jwt_decode(token)
+
+           if (decoded.role == 2) {
+            this.props.navigation.navigate('Paciente');
+               
+           }
+           if (decoded.role == 3) {
+            this.props.navigation.navigate('Medico');
+        
+           }
         }
-    
-        console.warn(token);
+        
+            
     }
 
     render() {

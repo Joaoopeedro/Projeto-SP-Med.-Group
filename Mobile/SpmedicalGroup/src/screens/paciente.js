@@ -25,7 +25,7 @@ export default class Paciente extends Component {
     render(){
         return(
             <View>
-                <Text>tela Paciente</Text>
+                <Text>Paciente</Text>
             </View>
         )
     }
