@@ -21,12 +21,14 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-import Paciente from './paciente'
-import Perfil from './perfil'
+import MedicoTela from '../component/medicoTela'
+
 
 function CustomDrawerContent({ navigation }) {
     return (
         <View style={styles.drawer}>
+            <Text style={styles.text1}>Médico</Text>
+            
             <Text style={styles.text}>Inicio</Text>
             <Text style={styles.text}>Consulta</Text>
             <Text style={styles.text}>Contato</Text>
@@ -57,25 +59,25 @@ export default class Medico extends Component {
     }
 
     
-    if (condition) {
-        
-    }
+    
 
 
     render() {
         return (
             <View style={styles.bory}>
                 <View style={styles.header}>
-                    <Image
+                    {/* <Image
                         source={require('../../assets/img/Logo.png')}
                         style={styles.mainImgheader}
-                    />
+                    /> */}
                     <Drawer.Navigator
                         initialRouteName="Medico"
                         drawerContent={CustomDrawerContent}
                         screenOptions={{
-                            drawerHideStatusBarOnOpen: true,
+                            drawerHideStatusBarOnOpen: false,
                             drawerStatusBarAnimation: 'fade',
+                            drawerPosition:'right',
+                            
                             drawerStyle: {
                                 backgroundColor: "#285EBD",
                                 width: 240,
@@ -86,12 +88,14 @@ export default class Medico extends Component {
                             drawerLabelStyle: {
                                 textAlign: 'center',
                                 color: '#fff'
+                            },drawerIcon:{
+                                alignItems:'flex-end'
                             }
 
                         }}
                     >
 
-                        <Drawer.Screen name="Medico" component={Paciente} />
+                        <Drawer.Screen name="Medico" component={MedicoTela} />
 
 
 
@@ -119,7 +123,7 @@ const styles = StyleSheet.create({
         marginLeft: 25
     },
     drawer: {
-        height: "30%",
+        height: "50%",
         justifyContent: 'space-evenly',
         alignItems: "center",
 
@@ -133,6 +137,16 @@ const styles = StyleSheet.create({
         color:"#fff"
 
 
+    },
+    text1:{
+        fontFamily : "OpenSans-Bold",
+        fontStyle: "normal",
+        fontWeight: "normal",
+        fontSize: 15,
+        lineHeight: 20,
+        color:"#fff",
+        marginBottom:13
+        
     }
     
 
