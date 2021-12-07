@@ -108,8 +108,8 @@ export default class MedicoTela extends Component {
         <View style={styles.organizacao}>
             <View style={styles.flatItemRow}>
                 <View style={styles.flatItemContentRow}>
-                    <Text style={styles.item}>Paciente:</Text>
-                    <Text style={styles.flatItemContent}>{item.idPacienteNavigation.nomePaciente}</Text>
+                    <Text style={styles.item}>Médico:</Text>
+                    <Text style={styles.flatItemContent}>{item.idMedicoNavigation.nomeMedico}</Text>
 
                 </View>
 
@@ -120,12 +120,7 @@ export default class MedicoTela extends Component {
                     }).format(new Date(item.dataConsulta))}</Text>
                 </View>
 
-                <View style={styles.flatItemContentRow}>
-                    <Text style={styles.item}>Data de Nascimento:</Text>
-                    <Text style={styles.flatItemContent}>{Intl.DateTimeFormat("pt-BR", {
-                        year: 'numeric', month: 'numeric', day: 'numeric',
-                    }).format(new Date(item.idPacienteNavigation.dataNascimento))}</Text>
-                </View>
+                
 
                 <View style={styles.flatItemContentRow}>
                     <Text style={styles.item}>Situação:</Text>

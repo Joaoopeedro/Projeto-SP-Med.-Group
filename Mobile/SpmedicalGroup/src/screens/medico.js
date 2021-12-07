@@ -9,7 +9,7 @@ import {
     TextInput,
     Button
 } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DrawerActions } from '@react-navigation/native';
 
 import {
     createDrawerNavigator,
@@ -23,16 +23,25 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import MedicoTela from '../component/medicoTela'
 
+// async function Logout() {
+//     await AsyncStorage.removeItem('userToken');
+//     navigation.navigate('Login');
+// }
 
 function CustomDrawerContent({ navigation }) {
     return (
         <View style={styles.drawer}>
             <Text style={styles.text1}>Médico</Text>
-            
+
             <Text style={styles.text}>Inicio</Text>
             <Text style={styles.text}>Consulta</Text>
             <Text style={styles.text}>Contato</Text>
-            <Text style={styles.text}>Sair</Text>
+            <TouchableOpacity
+                // onPress={Logout}
+            >
+                <Text style={styles.text}>Sair</Text>
+            </TouchableOpacity>
+
         </View>
     )
 
@@ -58,26 +67,43 @@ export default class Medico extends Component {
         };
     }
 
-    
-    
+
+
 
 
     render() {
         return (
             <View style={styles.bory}>
                 <View style={styles.header}>
-                    {/* <Image
-                        source={require('../../assets/img/Logo.png')}
-                        style={styles.mainImgheader}
-                    /> */}
+                    <View style={styles.org_header}>
+                        <Image
+                            source={require('../../assets/img/Logo.png')}
+                            style={styles.mainImgheader}
+
+                        />
+
+                        <TouchableOpacity
+                            onPress={() => this.props.navigation.dispatch(DrawerActions.toggleDrawer())}
+                        >
+                            <Image
+                                source={require('../../assets/img/menu.png')}
+                                style={styles.menu}
+                            />
+                        </TouchableOpacity>
+
+                    </View>
+
+
                     <Drawer.Navigator
                         initialRouteName="Medico"
                         drawerContent={CustomDrawerContent}
                         screenOptions={{
                             drawerHideStatusBarOnOpen: false,
                             drawerStatusBarAnimation: 'fade',
-                            drawerPosition:'right',
-                            
+                            drawerPosition: 'right',
+                            headerTransparent: true,
+                            headerShown: false,
+
                             drawerStyle: {
                                 backgroundColor: "#285EBD",
                                 width: 240,
@@ -88,9 +114,7 @@ export default class Medico extends Component {
                             drawerLabelStyle: {
                                 textAlign: 'center',
                                 color: '#fff'
-                            },drawerIcon:{
-                                alignItems:'flex-end'
-                            }
+                            },
 
                         }}
                     >
@@ -100,6 +124,8 @@ export default class Medico extends Component {
 
 
                     </Drawer.Navigator>
+
+
 
 
 
@@ -115,7 +141,15 @@ const styles = StyleSheet.create({
         // backgroundColor: 'blue',
 
         height: '100%',
-        justifyContent: 'center'
+        justifyContent: 'center',
+
+
+    },
+    org_header: {
+        width: '95%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
     },
     mainImgheader: {
         width: 58,
@@ -129,25 +163,33 @@ const styles = StyleSheet.create({
 
     },
     text: {
-        fontFamily : "OpenSans-SemiBold",
+        fontFamily: "OpenSans-SemiBold",
         fontStyle: "normal",
         fontWeight: "normal",
         fontSize: 15,
         lineHeight: 20,
-        color:"#fff"
+        color: "#fff"
 
 
     },
-    text1:{
-        fontFamily : "OpenSans-Bold",
+    text1: {
+        fontFamily: "OpenSans-Bold",
         fontStyle: "normal",
         fontWeight: "normal",
         fontSize: 15,
         lineHeight: 20,
-        color:"#fff",
-        marginBottom:13
-        
+        color: "#fff",
+        marginBottom: 13
+
+    },
+    menu: {
+        width: 50,
+        height: 40,
+        marginLeft: 25,
+
+
     }
-    
+
+
 
 })
