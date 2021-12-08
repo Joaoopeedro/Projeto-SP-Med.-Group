@@ -23,10 +23,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import MedicoTela from '../component/medicoTela'
 
-// async function Logout() {
-//     await AsyncStorage.removeItem('userToken');
-//     navigation.navigate('Login');
-// }
 
 function CustomDrawerContent({ navigation }) {
     return (
@@ -37,9 +33,12 @@ function CustomDrawerContent({ navigation }) {
             <Text style={styles.text}>Consulta</Text>
             <Text style={styles.text}>Contato</Text>
             <TouchableOpacity
-                // onPress={Logout}
+                onPress={ async() => {
+                    await AsyncStorage.removeItem('userToken');
+                    navigation.navigate('Login');
+                }}
             >
-                <Text style={styles.text}>Sair</Text>
+                <Text style={styles.text} >Logout</Text>
             </TouchableOpacity>
 
         </View>
@@ -48,6 +47,7 @@ function CustomDrawerContent({ navigation }) {
 }
 
 const Drawer = createDrawerNavigator();
+
 export default class Medico extends Component {
     constructor(props) {
         super(props);
@@ -97,6 +97,7 @@ export default class Medico extends Component {
                     <Drawer.Navigator
                         initialRouteName="Medico"
                         drawerContent={CustomDrawerContent}
+                        
                         screenOptions={{
                             drawerHideStatusBarOnOpen: false,
                             drawerStatusBarAnimation: 'fade',

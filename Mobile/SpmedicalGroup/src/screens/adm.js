@@ -11,8 +11,6 @@ import {
 } from 'react-native';
 import { NavigationContainer, DrawerActions } from '@react-navigation/native';
 
-import { useNavigation } from '@react-navigation/native';
-
 import {
     createDrawerNavigator,
     DrawerContentScrollView,
@@ -23,23 +21,13 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-import PacienteTela from '../component/pacienteTela'
-
-// export default realizarLogout = async () => {
-
-//     try {
-//         await AsyncStorage.removeItem('userToken');
-//         this.props.navigation.navigate('Login');
-//     } catch (error) {
-//         console.warn(error);
-//     }
-// };
+import AdmTela from '../component/admTela'
 
 
 function CustomDrawerContent({ navigation }) {
     return (
         <View style={styles.drawer}>
-            <Text style={styles.text1}>Paciente</Text>
+            <Text style={styles.text1}>Administrador</Text>
 
             <Text style={styles.text}>Inicio</Text>
             <Text style={styles.text}>Consulta</Text>
@@ -58,17 +46,9 @@ function CustomDrawerContent({ navigation }) {
 
 }
 
-
-
 const Drawer = createDrawerNavigator();
-export default class Paciente extends Component {
 
-    
-
-
-
-    
-
+export default class Adm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -86,8 +66,6 @@ export default class Paciente extends Component {
             keyAtual: 0
         };
     }
-
-    
 
 
 
@@ -142,7 +120,7 @@ export default class Paciente extends Component {
                         }}
                     >
 
-                        <Drawer.Screen name="Medico" component={PacienteTela} />
+                        <Drawer.Screen name="Medico" component={AdmTela} />
 
 
 

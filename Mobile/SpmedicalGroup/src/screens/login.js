@@ -19,8 +19,8 @@ export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: 'mariana@outlook.com',
-            senha: 'mariana723',
+            email: '',
+            senha: '',
         };
     }
 
@@ -39,6 +39,9 @@ export default class Login extends Component {
         if (resposta.status == 200) {
            var decoded = jwt_decode(token)
 
+           if (decoded.role == 1) {
+            this.props.navigation.navigate('Adm');
+           }
            if (decoded.role == 2) {
             this.props.navigation.navigate('Paciente');
                
