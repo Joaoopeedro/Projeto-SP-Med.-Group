@@ -106,7 +106,13 @@ namespace sp_Medical_group.Web.Api.Repositories
                             {
                                 NomeMedico = c.IdMedicoNavigation.NomeMedico,
                                 Crm = c.IdMedicoNavigation.Crm,
-                                IdEspecializacao = c.IdMedicoNavigation.IdEspecializacao
+                                IdEspecializacao = c.IdMedicoNavigation.IdEspecializacao,
+                                IdClinicaNavigation = new Clinica()
+                                {
+                                    IdClinica = c.IdMedicoNavigation.IdClinicaNavigation.IdClinica,
+                                    Endereco = c.IdMedicoNavigation.IdClinicaNavigation.Endereco
+                                }
+
                             },
                             IdSituacaoNavigation = new Situacao()
                             {

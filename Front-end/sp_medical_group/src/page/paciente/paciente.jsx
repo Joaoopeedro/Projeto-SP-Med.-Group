@@ -1,4 +1,5 @@
 import { Component } from "react";
+// import {GoogleApiWrapper} from 'google-maps-react';
 
 
 
@@ -70,6 +71,7 @@ export default class Paciente extends Component {
                                     <tr>
                                         <th>Médico</th>
                                         <th>Data da consulta</th>
+                                        <th>Endereço Clinica</th>
                                         <th>Descrição</th>
                                         <th>Situação</th>
 
@@ -84,6 +86,7 @@ export default class Paciente extends Component {
                                                     year: 'numeric', month: 'numeric', day: 'numeric',
                                                     hour: 'numeric', minute: 'numeric', hour12: false
                                                 }).format(new Date(con.dataConsulta))}</td>
+                                                <td><a href="">{con.idMedicoNavigation.idClinicaNavigation.endereco}</a></td>
                                                 <td>{con.descricao}</td>
                                                 <td>{con.idSituacaoNavigation.situacao1}</td>
                                             </tr>
