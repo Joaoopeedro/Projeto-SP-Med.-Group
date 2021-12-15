@@ -14,6 +14,8 @@ namespace sp_Medical_group.Web.Api.Domains
 
         public string id { get; set; }
 
+        public short idClinica { get; set; }
+
         [BsonElement("latitude")]
         [BsonRequired]
         public string Latitude { get; set; }

@@ -16,6 +16,7 @@ import adm_usuario from './page/adm/adm_usuario';
 import medico from './page/medico/medico';
 import paciente from './page/paciente/paciente';
 import NotFound from './page/notFound/notFound';
+import Localizacao from './page/mapa/mapa';
 
 
 import reportWebVitals from './reportWebVitals';
@@ -63,10 +64,11 @@ const routing = (
       <Switch>
         <Route exact path="/" component={Home} /> {/* Home */}
         <Route path="/login" component={Login} /> {/* Login */}
-        <PermissaoAdm path="/admListar" component={adm_listar} /> {/* Login */}
-        <PermissaoAdm path="/admusuario" component={adm_usuario} /> {/* Login */}
-        <PermissaoMedico path="/medico" component={medico} /> {/* Login */}
-        <PermissaoPaciente path="/paciente" component={paciente} /> {/* Login */}
+        <PermissaoAdm path="/admListar" component={adm_listar} /> {/* AdmListar */}
+        <PermissaoAdm path="/admusuario" component={adm_usuario} /> {/* AdmUsuario */}
+        <PermissaoMedico path="/medico" component={medico} /> {/* Medico */}
+        <PermissaoPaciente path="/paciente" component={paciente} /> {/* Paciente */}
+        <PermissaoPaciente path="/Mapa" component={Localizacao}/>
         <Route path="/notFound" component={NotFound} /> {/* Not Found */}
         <Redirect to="/notFound" /> 
       </Switch>

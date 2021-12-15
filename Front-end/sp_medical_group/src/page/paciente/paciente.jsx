@@ -55,7 +55,7 @@ export default class Paciente extends Component {
                         <div className="org_heade_adm">
                             <a href="/">Home</a>
                             <a href="/paciente">Consultas</a>
-                            <a href="/">Agentdar</a>
+                            <a href="/">Agendar</a>
                             <a href="/paciente">Paciente</a>
 
 
@@ -86,7 +86,7 @@ export default class Paciente extends Component {
                                                     year: 'numeric', month: 'numeric', day: 'numeric',
                                                     hour: 'numeric', minute: 'numeric', hour12: false
                                                 }).format(new Date(con.dataConsulta))}</td>
-                                                <td><a href="">{con.idMedicoNavigation.idClinicaNavigation.endereco}</a></td>
+                                                <td><a href="/Mapa">{con.idMedicoNavigation.idClinicaNavigation.endereco}</a></td>
                                                 <td>{con.descricao}</td>
                                                 <td>{con.idSituacaoNavigation.situacao1}</td>
                                             </tr>
