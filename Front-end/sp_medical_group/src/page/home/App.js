@@ -1,7 +1,11 @@
 import '../../assets/css/App.css'
 
+
+import { parseJwt } from '../../services/auth';
+
 import { useHistory } from "react-router-dom";
 import { usuarioAutenticado } from '../../services/auth'
+
 
 import logo from '../../assets/img/Logo_2-removebg-preview.png'
 import wpp from '../../assets/img/wpp-removebg-preview.png'
@@ -22,6 +26,27 @@ function App() {
         history.push('/')
     }
 
+    // function Consulta(){
+    //     var logado = parseJwt().role;
+    //     switch (logado) {
+    //         case 1:
+    //           return(history.push("/admListar"))  
+                
+    //             break;
+    //         case 2:
+    //             return(history.push("/paciente")) 
+    //             break;
+    //         case 3:
+    //             return(history.push("/medico"))
+    //             break;
+        
+    //         default:
+    //             break;
+    //     }
+    // }
+   
+
+
     return (
         <div>
             <header className=" container header_Home" id="header">
@@ -36,13 +61,13 @@ function App() {
                     <div className="org_header">
                         <a href="/">Home</a>
                         <a href="#contato">Contato</a>
-                        <a href="/login">Consultas</a>
+                        <a href="/">Consultas</a>
                         <div className="login-header" href="/login">
                             {
                                 usuarioAutenticado() ? (
                                     <div>
                                         <div onClick={logOut}>
-                                            <a  href="/">
+                                            <a href="/">
                                                 <p>Logout</p>
                                             </a>
                                         </div>
