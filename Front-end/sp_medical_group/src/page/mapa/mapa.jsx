@@ -97,5 +97,5 @@ class Localizacao extends Component {
 
 
 export default GoogleApiWrapper({
-    apiKey: ("AIzaSyDBAKlR7YNlROT-q03Ra_Qpl_n_NiQRmdQ")
+    // apiKey: ("AIzaSyDBAKlR7YNlROT-q03Ra_Qpl_n_NiQRmdQ")
 })(Localizacao)
