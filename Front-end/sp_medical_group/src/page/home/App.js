@@ -26,24 +26,25 @@ function App() {
         history.push('/')
     }
 
-    // function Consulta(){
-    //     var logado = parseJwt().role;
-    //     switch (logado) {
-    //         case 1:
-    //           return(history.push("/admListar"))  
+    function Consulta(){
+        var logado = parseJwt().role;
+        switch (logado) {
+            case "1":
+              return(history.push("/admListar"))  
                 
-    //             break;
-    //         case 2:
-    //             return(history.push("/paciente")) 
-    //             break;
-    //         case 3:
-    //             return(history.push("/medico"))
-    //             break;
+                
+            case "2":
+                return(history.push("/paciente")) 
+                
+            case "3":
+                return(history.push("/medico"))
+                
         
-    //         default:
-    //             break;
-    //     }
-    // }
+            default:
+                return(history.push("/"))
+                
+        }
+    }
    
 
 
@@ -61,7 +62,7 @@ function App() {
                     <div className="org_header">
                         <a href="/">Home</a>
                         <a href="#contato">Contato</a>
-                        <a href="/">Consultas</a>
+                        <a href="#" onClick={Consulta}>Consultas</a>
                         <div className="login-header" href="/login">
                             {
                                 usuarioAutenticado() ? (
