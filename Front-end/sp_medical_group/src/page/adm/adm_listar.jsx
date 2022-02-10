@@ -26,7 +26,7 @@ export default function Adm_listar() {
         console.log('Agora vamos fazer a chamada para a API.')
 
         // faz a chamada para a API usando axios
-        axios('http://localhost:5000/api/Consultas', {
+        axios('https://62055836161670001741b957.mockapi.io/consula', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -49,7 +49,7 @@ export default function Adm_listar() {
     useEffect(buscarConsultas, []);
 
     function medicos() {
-        axios('http://localhost:5000/api/Medicos', {
+        axios('https://62055836161670001741b957.mockapi.io/Medico', {
             headers : {
                 'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -66,7 +66,7 @@ export default function Adm_listar() {
     useEffect(medicos, [])
 
     function pacientes() {
-        axios('http://localhost:5000/api/Pacientes/', {
+        axios('https://62055836161670001741b957.mockapi.io/paciente', {
             headers : {
                 'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -91,7 +91,7 @@ export default function Adm_listar() {
         // evita o comportamento padrão do navegador
         evento.preventDefault();
 
-        axios.post('http://localhost:5000/api/Consultas', {
+        axios.post('https://62055836161670001741b957.mockapi.io/consula', {
             idPaciente:idPaciente,
             idMedico:idMedico,
             dataConsulta:dataCadastro,
@@ -204,15 +204,15 @@ export default function Adm_listar() {
                                     listaconsultas.map((con) => {
                                         return (
 
-                                            <tr key={con.idConsulta}>
-                                                <td>{con.idPacienteNavigation.nomePaciente}</td>
-                                                <td>{con.idMedicoNavigation.nomeMedico}</td>
+                                            <tr key={con.id}>
+                                                <td>{con.paciente[0].RG}</td>
+                                                <td>{con.medico[0].nomeMedico}</td>
                                                 <td>{Intl.DateTimeFormat("pt-BR", {
                                                     year: 'numeric', month: 'numeric', day: 'numeric',
                                                     hour: 'numeric', minute: 'numeric', hour12: false
                                                 }).format(new Date(con.dataConsulta))}</td>
                                                 <td>{con.descricao}</td>
-                                                <td>{con.idSituacaoNavigation.situacao1
+                                                <td>{con.situacao1
                                                 }</td>
                                                 {/* <td className="bnt_editar_adm"><button>Editar</button></td> */}
 
